@@ -11,7 +11,7 @@ import {
 //   IgnoreUtilFocusChanges: false,
 // }
 
-export function isFocusable(element: HTMLElement) {
+export function isFocusable(element: HTMLElement): boolean {
   if (
     element.tabIndex > 0 ||
     (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)
@@ -38,7 +38,7 @@ export function isFocusable(element: HTMLElement) {
   return false
 }
 
-export function attemptFocus(element: HTMLElement) {
+export function attemptFocus(element: HTMLElement): boolean {
   if (!isFocusable(element)) {
     return false
   }
@@ -56,7 +56,7 @@ export function attemptFocus(element: HTMLElement) {
   return document.activeElement === element
 }
 
-export function focusFirstDescendant(element: HTMLElement) {
+export function focusFirstDescendant(element: HTMLElement): boolean {
   for (let i = 0; i < element.childNodes.length; i++) {
     const child = element.childNodes[i]
 
@@ -68,7 +68,7 @@ export function focusFirstDescendant(element: HTMLElement) {
   return false
 }
 
-export function focusLastDescendant(element: HTMLElement) {
+export function focusLastDescendant(element: HTMLElement): boolean {
   for (let i = element.childNodes.length - 1; i >= 0; i--) {
     const child = element.childNodes[i]
 

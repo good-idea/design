@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Box, BoundaryElementProvider, Button, Card, Text, Tooltip} from '@sanity/ui'
 import {withKnobs} from '@storybook/addon-knobs'
 import React, {useState} from 'react'

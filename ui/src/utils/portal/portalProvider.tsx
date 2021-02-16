@@ -9,7 +9,7 @@ interface PortalProviderProps {
 
 const __BROWSER__ = typeof window !== 'undefined'
 
-export function PortalProvider(props: PortalProviderProps) {
+export function PortalProvider(props: PortalProviderProps): React.ReactElement {
   const {boundaryElement, children, element} = props
 
   const value: PortalContextValue = useMemo(() => {

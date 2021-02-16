@@ -32,7 +32,7 @@ export function MenuButton({
   portal,
   popoverRadius,
   preventOverflow,
-}: MenuButtonProps) {
+}: MenuButtonProps): React.ReactElement {
   const [open, setOpen] = useState(false)
   const [focusLast, setFocusLast] = useState(false)
   const [buttonElement, setButtonElement] = useState<HTMLButtonElement | null>(null)

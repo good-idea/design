@@ -6,7 +6,7 @@ export function AutocompleteOption(props: {
   onSelect: (v: string) => void
   selected: boolean
   value: string
-}) {
+}): React.ReactElement {
   const {children, id, onSelect, selected, value} = props
 
   const handleClick = useCallback(() => {

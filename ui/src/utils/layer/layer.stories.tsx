@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {CloseIcon} from '@sanity/icons'
 import {
   Box,
@@ -51,6 +53,7 @@ export const multipleRoots = () => {
         </Card>
       </LayerProvider>
       <LayerProvider zOffset={200}>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <Card as={Layer as any} padding={3} shadow={5} style={{top: -50, left: 30}}>
           <Stack space={3}>
             <LayerDebugInfo />

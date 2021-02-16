@@ -21,7 +21,7 @@ const Input = styled.select<{
   $padding?: number | number[]
   $radius?: number | number[]
   $space?: number | number[]
-}>(selectStyle.input)
+}>(selectStyle.input as any)
 
 const IconBox = styled(Box)(selectStyle.iconBox)
 

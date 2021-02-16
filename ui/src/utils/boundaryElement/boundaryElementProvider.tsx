@@ -7,7 +7,7 @@ export function BoundaryElementProvider({
 }: {
   children: React.ReactNode
   element: HTMLElement | null
-}) {
+}): React.ReactElement {
   const value: BoundaryElementContextValue = useMemo(() => ({version: 0.0, element}), [element])
 
   return <BoundaryElementContext.Provider value={value}>{children}</BoundaryElementContext.Provider>

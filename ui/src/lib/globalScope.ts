@@ -16,4 +16,5 @@ function getGlobalScope() {
   throw new Error('@sanity/ui: could not locate global scope')
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const globalScope = getGlobalScope() as any

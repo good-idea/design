@@ -2,9 +2,10 @@ import {CSSObject} from 'styled-components'
 import {EMPTY_ARRAY} from '../constants'
 import {Theme} from '../theme'
 
-export function fillCSSObject(propKeys: string[], value: any): CSSObject {
+export function fillCSSObject(propKeys: string[], value: unknown): CSSObject {
   return propKeys.reduce((obj: CSSObject, propKey) => {
-    obj[propKey] = value
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    obj[propKey] = value as any
 
     return obj
   }, {})
@@ -40,7 +41,7 @@ export function getResponsiveSpace(
   theme: Theme,
   props: string[],
   spaceIndexes: number[] = EMPTY_ARRAY
-) {
+): CSSObject[] | null {
   if (!Array.isArray(spaceIndexes)) {
     throw new Error('the property must be array of numbers')
   }

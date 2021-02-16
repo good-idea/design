@@ -7,11 +7,11 @@ export default {
   decorators: [withKnobs],
 }
 
-export const color = () => {
+export const color = (): React.ReactElement => {
   return <ColorProviderExample />
 }
 
-export const context = () => {
+export const context = (): React.ReactElement => {
   return <DebugThemeContext />
 }
 
@@ -31,6 +31,7 @@ function ColorProviderExample() {
           {Object.entries(theme.sanity.color)
             .filter((v) => v[0] !== 'dark')
             .map(([key, value]) => (
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               <ColorObjectPreview key={key} name={key} value={value as any} />
             ))}
         </Stack>

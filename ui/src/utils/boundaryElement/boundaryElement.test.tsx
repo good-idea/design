@@ -50,6 +50,7 @@ describe('utils/boundaryElement', () => {
         const value = undefined
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <BoundaryElementContext.Provider value={value as any}>
             <Debug />
           </BoundaryElementContext.Provider>
@@ -82,6 +83,7 @@ describe('utils/boundaryElement', () => {
         }
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <BoundaryElementContext.Provider value={value as any}>
             <Debug />
           </BoundaryElementContext.Provider>

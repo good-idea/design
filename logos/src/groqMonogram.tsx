@@ -1,7 +1,7 @@
 import {hues} from '@sanity/color'
 import React from 'react'
 
-export function GroqMonogram(props: React.SVGProps<SVGSVGElement>) {
+export function GroqMonogram(props: React.SVGProps<SVGSVGElement>): React.ReactElement {
   return (
     <svg
       data-sanity-icon="groq-monogram"

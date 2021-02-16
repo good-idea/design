@@ -1,4 +1,5 @@
 import {Property} from 'csstype'
+import {CSSObject} from 'styled-components'
 import {getResponsiveProp, responsive} from '../helpers'
 import {ThemeProps} from '../types'
 import {ResponsiveBoxStyleProps} from './types'
@@ -13,7 +14,9 @@ const BOX_HEIGHT = {
   fill: '100%',
 }
 
-export function responsiveBoxStyle() {
+export function responsiveBoxStyle(): Array<
+  (props: ResponsiveBoxStyleProps & ThemeProps) => CSSObject[]
+> {
   return [
     responsiveBoxSizingStyle,
     responsiveBoxHeightStyle,

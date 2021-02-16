@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Card, Grid, Text} from '@sanity/ui'
 import {action} from '@storybook/addon-actions'
 import {boolean, select, withKnobs} from '@storybook/addon-knobs'

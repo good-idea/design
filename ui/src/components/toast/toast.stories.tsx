@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Button, Inline, Toast, ToastProvider, useToast} from '@sanity/ui'
 import {withKnobs} from '@storybook/addon-knobs'
 import React from 'react'

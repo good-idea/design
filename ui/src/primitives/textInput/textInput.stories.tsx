@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {icons, IconSymbol} from '@sanity/icons'
 import {Button, Card, Container, Stack, Text, TextInput} from '@sanity/ui'
 import {boolean, select, text, withKnobs} from '@storybook/addon-knobs'

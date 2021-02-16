@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Card, Tab, TabList, TabPanel} from '@sanity/ui'
 import {withKnobs} from '@storybook/addon-knobs'
 import React, {useState} from 'react'

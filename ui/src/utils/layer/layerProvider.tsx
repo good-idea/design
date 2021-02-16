@@ -8,7 +8,7 @@ export function LayerProvider({
 }: {
   children?: React.ReactNode
   zOffset?: number | number[]
-}) {
+}): React.ReactElement {
   const parent = useContext(LayerContext)
   const zOffset = useResponsiveProp(zOffsetProp)
   const maxMediaIndex = zOffset.length - 1

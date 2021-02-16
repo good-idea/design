@@ -9,7 +9,7 @@ export function ThemeProvider(props: {
   scheme?: ThemeColorSchemeKey
   theme: RootTheme
   tone?: ThemeColorName
-}) {
+}): React.ReactElement {
   const {children, scheme = 'light', theme: rootTheme, tone = 'default'} = props
 
   const theme: Theme = useMemo(() => {

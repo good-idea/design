@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Autocomplete, Box, Button, Card, Code, Label, Stack, Text} from '@sanity/ui'
 import {boolean, select, withKnobs} from '@storybook/addon-knobs'
 import React, {useCallback, useRef, useState} from 'react'

@@ -58,6 +58,7 @@ describe('utils/layer', () => {
         const value = undefined
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <LayerContext.Provider value={value as any}>
             <Debug />
           </LayerContext.Provider>
@@ -89,6 +90,7 @@ describe('utils/layer', () => {
         }
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <LayerContext.Provider value={value as any}>
             <Debug />
           </LayerContext.Provider>

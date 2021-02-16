@@ -12,16 +12,16 @@ interface ErrorBoundaryState {
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   state: ErrorBoundaryState = {error: null}
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError(error: Error): {error: Error} {
     // Update state so the next render will show the fallback UI.
     return {error}
   }
 
-  componentDidCatch(error: Error, info: React.ErrorInfo) {
+  componentDidCatch(error: Error, info: React.ErrorInfo): void {
     this.props.onCatch({error, info})
   }
 
-  render() {
+  render(): React.ReactNode {
     const {error} = this.state
 
     if (error) {

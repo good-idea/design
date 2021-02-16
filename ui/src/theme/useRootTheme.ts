@@ -2,7 +2,7 @@ import {useContext} from 'react'
 import {isRecord} from '../lib/isRecord'
 import {ThemeContext, ThemeContextValue} from './themeContext'
 
-export function useRootTheme() {
+export function useRootTheme(): ThemeContextValue {
   const value: unknown = useContext(ThemeContext)
 
   if (!value) {
@@ -16,5 +16,6 @@ export function useRootTheme() {
     throw new Error('useRootTheme(): the context value is not compatible')
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (value as any) as ThemeContextValue
 }

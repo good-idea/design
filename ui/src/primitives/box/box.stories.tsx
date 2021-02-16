@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Box, Card, Text} from '@sanity/ui'
 import {action} from '@storybook/addon-actions'
 import {select, withKnobs} from '@storybook/addon-knobs'

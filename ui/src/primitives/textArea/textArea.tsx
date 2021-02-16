@@ -21,7 +21,7 @@ interface TextInputProps extends ResponsiveRadiusProps {
   weight?: ThemeFontWeightKey
 }
 
-const Root = styled.span(textInputStyle.root)
+const Root = styled.span(textInputStyle.root as any)
 
 const InputRoot = styled.span`
   flex: 1;

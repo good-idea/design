@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Badge, Stack} from '@sanity/ui'
 import {action} from '@storybook/addon-actions'
 import {select, text, withKnobs} from '@storybook/addon-knobs'

@@ -49,7 +49,7 @@ export function ToastProvider({
   paddingX,
   paddingY,
   zOffset,
-}: ToastProviderProps) {
+}: ToastProviderProps): React.ReactElement {
   const [state, setState] = useState<ToastState>({toasts: []})
   const toastsRef = useRef<{[key: string]: {timeoutId: NodeJS.Timeout}}>({})
 

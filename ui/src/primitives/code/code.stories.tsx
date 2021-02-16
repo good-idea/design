@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Box, Code} from '@sanity/ui'
 import {select, text, withKnobs} from '@storybook/addon-knobs'
 import React from 'react'

@@ -7,7 +7,7 @@ export function useClickOutside(
   listener: ClickOutsideListener,
   elementsArg: Array<HTMLElement | null> = EMPTY_ARRAY,
   boundaryElement?: HTMLElement | null
-) {
+): (el: HTMLElement | null) => void {
   const [element, setElement] = useState<HTMLElement | null>(null)
   const elements = [element, ...elementsArg]
 

@@ -56,6 +56,7 @@ describe('theme', () => {
         const value = undefined
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <ThemeContext.Provider value={value as any}>
             <Debug />
           </ThemeContext.Provider>
@@ -87,6 +88,7 @@ describe('theme', () => {
         }
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <ThemeContext.Provider value={value as any}>
             <Debug />
           </ThemeContext.Provider>

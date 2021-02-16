@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Box, Button, Card, Placement, Popover, Text} from '@sanity/ui'
 import {boolean, withKnobs, select, text} from '@storybook/addon-knobs'
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react'
@@ -103,6 +105,7 @@ export const plain = () => {
   return <PropsExample {...props} />
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function PropsExample(props: any) {
   const [portalElement, setPortalElement] = useState<HTMLDivElement | null>(null)
 

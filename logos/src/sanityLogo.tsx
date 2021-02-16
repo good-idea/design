@@ -10,7 +10,9 @@ const schemes = {
   dark: [hues.gray[500].hex, hues.gray[300].hex, white.hex],
 }
 
-export function SanityLogo(props: SanityLogoProps & React.SVGProps<SVGSVGElement>) {
+export function SanityLogo(
+  props: SanityLogoProps & React.SVGProps<SVGSVGElement>
+): React.ReactElement {
   const scheme = schemes[props.dark ? 'dark' : 'light']
 
   return (

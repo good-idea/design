@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {icons, IconSymbol} from '@sanity/icons'
 import {Button, Card, Container} from '@sanity/ui'
 import {action} from '@storybook/addon-actions'
@@ -164,5 +166,6 @@ export const styledButton2 = () => {
   const props = {href: '#', text: 'Test'}
 
   // NOTE: This approach does not work with TypeScript
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return <StyledButton2 forwardedAs="a" {...(props as any)} />
 }

@@ -52,6 +52,7 @@ describe('components/toast', () => {
         const value = undefined
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <ToastContext.Provider value={value as any}>
             <Debug />
           </ToastContext.Provider>
@@ -83,6 +84,7 @@ describe('components/toast', () => {
         }
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <ToastContext.Provider value={value as any}>
             <Debug />
           </ToastContext.Provider>

@@ -1,4 +1,4 @@
-import {css} from 'styled-components'
+import {css, CSSObject, FlattenSimpleInterpolation} from 'styled-components'
 import {getResponsiveProp, rem, responsive, ThemeProps} from '../../styles'
 import {
   focusRingBorderStyle,
@@ -8,7 +8,19 @@ import {
 } from '../../styles/internal'
 import {ThemeFontSize} from '../../theme'
 
-function rootStyle() {
+export const selectStyle = {
+  root: rootStyle,
+  input: [
+    responsiveRadiusStyle,
+    inputBaseStyle,
+    inputColorStyle,
+    inputTextSizeStyle,
+    responsiveInputPaddingIconRightStyle,
+  ],
+  iconBox: iconBoxStyle,
+}
+
+function rootStyle(): FlattenSimpleInterpolation {
   return css`
     position: relative;
     width: stretch;
@@ -19,7 +31,7 @@ function rootStyle() {
   `
 }
 
-function inputBaseStyle(props: ThemeProps) {
+function inputBaseStyle(props: ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const font = theme.sanity.fonts.text
 
@@ -39,7 +51,7 @@ function inputBaseStyle(props: ThemeProps) {
   `
 }
 
-function inputColorStyle(props: ThemeProps) {
+function inputColorStyle(props: ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const {focusRing, input} = theme.sanity
   const color = theme.sanity.color.input
@@ -85,11 +97,11 @@ function inputColorStyle(props: ThemeProps) {
   `
 }
 
-function textSize(size: ThemeFontSize) {
+function textSize(size: ThemeFontSize): CSSObject {
   return {fontSize: rem(size.fontSize), lineHeight: rem(size.lineHeight)}
 }
 
-function inputTextSizeStyle(props: {$fontSize?: number | number[]} & ThemeProps) {
+function inputTextSizeStyle(props: {$fontSize?: number | number[]} & ThemeProps): CSSObject[] {
   const {theme, $fontSize} = props
   const {sizes} = theme.sanity.fonts.text
 
@@ -98,17 +110,7 @@ function inputTextSizeStyle(props: {$fontSize?: number | number[]} & ThemeProps)
   )
 }
 
-function inputStyle() {
-  return [
-    responsiveRadiusStyle,
-    inputBaseStyle,
-    inputColorStyle,
-    inputTextSizeStyle,
-    responsiveInputPaddingIconRightStyle,
-  ]
-}
-
-function iconBoxStyle(props: ThemeProps) {
+function iconBoxStyle(props: ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const color = theme.sanity.color.input
 
@@ -138,10 +140,4 @@ function iconBoxStyle(props: ThemeProps) {
       opacity: 0;
     }
   `
-}
-
-export const selectStyle = {
-  root: rootStyle,
-  input: inputStyle,
-  iconBox: iconBoxStyle,
 }

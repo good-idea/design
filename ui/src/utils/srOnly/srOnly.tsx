@@ -15,7 +15,7 @@ export function SrOnly({
 }: {
   as?: React.ElementType | keyof JSX.IntrinsicElements
   children?: React.ReactNode
-}) {
+}): React.ReactElement {
   return (
     <Root aria-hidden as={as} data-ui="SrOnly">
       {children}

@@ -9,7 +9,7 @@ interface ThemeColorProviderProps {
   tone?: ThemeColorName
 }
 
-export function ThemeColorProvider(props: ThemeColorProviderProps) {
+export function ThemeColorProvider(props: ThemeColorProviderProps): React.ReactElement {
   const {children, scheme, tone} = props
   const root = useRootTheme()
 

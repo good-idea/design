@@ -17,6 +17,7 @@ export const Code = forwardRef(
   (props: CodeProps & Omit<React.HTMLProps<HTMLElement>, 'size'>, ref) => {
     const {children, language: languageProp, size = 2, weight, ...restProps} = props
     const language = typeof languageProp === 'string' ? languageProp : undefined
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const registered = language ? Refractor.hasLanguage(language as any) : false
 
     return (

@@ -67,6 +67,7 @@ async function readIcon(filePath: string) {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function writeIcon(file: any) {
   await writeFile(file.targetPath, file.code)
 }
@@ -74,6 +75,7 @@ async function writeIcon(file: any) {
 async function generate() {
   await mkdirp(DIST_PATH)
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const filePaths = (await _glob(path.join(IMPORT_PATH, '**/*.svg'))) as any[]
   const files = await Promise.all(filePaths.map(readIcon))
 

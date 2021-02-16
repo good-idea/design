@@ -1,4 +1,4 @@
-import {css, FlattenSimpleInterpolation} from 'styled-components'
+import {css, CSSObject, FlattenSimpleInterpolation} from 'styled-components'
 import {ThemeFontWeightKey} from '../../theme'
 import {focusRingBorderStyle, focusRingStyle} from '../focusRing'
 import {getResponsiveProp, rem, responsive} from '../helpers'
@@ -15,20 +15,22 @@ export interface TextInputRepresentationStyleProps {
   $hasSuffix?: boolean
 }
 
-export const textInputStyle = {
-  root: () => [rootStyle],
-  input: () => [inputBaseStyle, inputFontSizeStyle],
-  representation: [representationStyle],
-}
-
 const ROOT_STYLE = css`
   &:not([hidden]) {
     display: flex;
   }
 `
 
-function rootStyle(): FlattenSimpleInterpolation {
-  return ROOT_STYLE
+export const textInputStyle: {
+  root: FlattenSimpleInterpolation
+  input: ((props: TextInputInputStyleProps & ThemeProps) => FlattenSimpleInterpolation)[]
+  representation: ((
+    props: TextInputRepresentationStyleProps & ThemeProps
+  ) => FlattenSimpleInterpolation)[]
+} = {
+  root: ROOT_STYLE,
+  input: [inputBaseStyle, inputFontSizeStyle],
+  representation: [representationStyle],
 }
 
 function inputBaseStyle(props: TextInputInputStyleProps & ThemeProps): FlattenSimpleInterpolation {
@@ -82,7 +84,7 @@ function inputBaseStyle(props: TextInputInputStyleProps & ThemeProps): FlattenSi
   `
 }
 
-function inputFontSizeStyle(props: TextInputInputStyleProps & ThemeProps) {
+function inputFontSizeStyle(props: TextInputInputStyleProps & ThemeProps): CSSObject[] {
   const {theme} = props
   const {fonts, media} = theme.sanity
 

@@ -77,6 +77,7 @@ const PopoverCard = styled(Card)<
   `
 )
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const applyMaxSize: Modifier<any, any> = {
   name: 'applyMaxSize',
   enabled: true,
@@ -133,6 +134,7 @@ export const Popover = forwardRef(
     const [arrowElement, setArrowElement] = useState<HTMLElement | null>(null)
     const popperReferenceElement = referenceElementProp || referenceElement
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const customMaxSize: Modifier<any, any> = useMemo(
       () => ({
         ...maxSize,
@@ -174,6 +176,7 @@ export const Popover = forwardRef(
           padding: 8,
         },
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ].filter(Boolean) as Modifier<any, any>[]
 
     const popper = usePopper(popperReferenceElement, popperElement, {
@@ -192,6 +195,7 @@ export const Popover = forwardRef(
     }
 
     const setRef = (el: HTMLElement | null) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const childRef = (child as any).ref
 
       setReferenceElement(el)
@@ -228,6 +232,7 @@ export const Popover = forwardRef(
           scheme={scheme}
           shadow={shadow}
           tone={tone}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           width={width as any}
         >
           {arrow && <PopoverArrow ref={setArrowElement} style={styles.arrow} />}

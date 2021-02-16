@@ -58,7 +58,7 @@ interface TextInputProps {
 
 const CLEAR_BUTTON_BOX_STYLE: React.CSSProperties = {zIndex: 2}
 
-const Root = styled.span(textInputStyle.root)
+const Root = styled.span(textInputStyle.root as any)
 
 const InputRoot = styled.span`
   flex: 1;

@@ -54,6 +54,7 @@ describe('utils/portal', () => {
         const value = undefined
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <PortalContext.Provider value={value as any}>
             <Debug />
           </PortalContext.Provider>
@@ -85,6 +86,7 @@ describe('utils/portal', () => {
         }
 
         return (
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           <PortalContext.Provider value={value as any}>
             <Debug />
           </PortalContext.Provider>

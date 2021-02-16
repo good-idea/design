@@ -53,7 +53,13 @@ const TextContainer = styled.span`
   }
 `
 
-export function MenuGroup({children, title}: {children: React.ReactNode; title: string}) {
+export function MenuGroup({
+  children,
+  title,
+}: {
+  children: React.ReactNode
+  title: string
+}): React.ReactElement {
   const [open, setOpen] = useState(false)
   const {mount, onItemClick, onMouseEnter, onMouseLeave} = useMenu()
   const rootRef = useRef<HTMLButtonElement | null>(null)

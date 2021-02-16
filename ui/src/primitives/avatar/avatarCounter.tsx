@@ -54,7 +54,11 @@ interface AvatarCounterProps {
   tone?: 'navbar'
 }
 
-export function AvatarCounter({count, size: sizeProp = 0, tone}: AvatarCounterProps) {
+export function AvatarCounter({
+  count,
+  size: sizeProp = 0,
+  tone,
+}: AvatarCounterProps): React.ReactElement {
   const size: AvatarSize[] = useResponsiveProp(sizeProp, [0])
 
   return (

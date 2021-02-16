@@ -1,15 +1,25 @@
 'use strict'
 
-const common = {
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
     es6: true,
     node: true,
   },
-  extends: ['plugin:react/recommended', 'eslint:recommended', 'plugin:prettier/recommended'],
-  parser: 'babel-eslint',
-  plugins: ['import', 'jsx-a11y', 'react', 'react-hooks', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  plugins: ['import', 'jsx-a11y', 'react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/member-delimiter-style': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
     'import/order': [
       'error',
       {
@@ -32,42 +42,21 @@ const common = {
     ],
     'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
-    'react/no-unescaped-entities': 0,
+    'react/no-unescaped-entities': 'off',
   },
   settings: {react: {version: 'detect'}},
-}
-
-module.exports = {
-  ...common,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
   overrides: [
     {
-      ...common,
-      files: ['**/*.ts', '**/*.tsx'],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-        ecmaVersion: 2018,
-        sourceType: 'module',
-      },
-      plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
-      extends: [
-        'plugin:react/recommended',
-        'eslint:recommended',
-        'plugin:prettier/recommended',
-        'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:@typescript-eslint/recommended',
-      ],
+      files: ['*.js'],
       rules: {
-        ...common.rules,
-        '@typescript-eslint/explicit-module-boundary-types': 0,
-        '@typescript-eslint/interface-name-prefix': 0,
-        '@typescript-eslint/member-delimiter-style': 0,
-        '@typescript-eslint/no-empty-interface': 0,
-
-        // @todo: remove this
-        '@typescript-eslint/no-explicit-any': 0,
+        '@typescript-eslint/no-var-requires': 'off',
       },
     },
   ],

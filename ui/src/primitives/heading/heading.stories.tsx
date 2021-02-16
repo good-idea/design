@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import {Card, Heading} from '@sanity/ui'
 import {boolean, select, text, withKnobs} from '@storybook/addon-knobs'
 import React from 'react'
