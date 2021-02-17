@@ -1,10 +1,20 @@
 {
   "extends": "../tsconfig",
-  "include": ["./scripts", "./src", "./storybook", "./test", "./typings/*.d.ts"],
+  "include": [
+    "./package.json",
+    "./scripts",
+    "./src",
+    "./storybook",
+    "./temp/*.json",
+    "./test",
+    "./typings/*.d.ts"
+  ],
   "compilerOptions": {
     "outDir": "./dist/",
     "jsx": "react",
+    "resolveJsonModule": true,
     "paths": {
+      "@sanity/ui": ["./ui/src"],
       "$storybook/*": ["./ui/storybook/*"]
     }
   }

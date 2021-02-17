@@ -1,6 +1,6 @@
-import {Card, useRootTheme} from '@sanity/ui'
 import React from 'react'
 import styled from 'styled-components'
+import {Card, useRootTheme} from '../../src'
 
 const Root = styled(Card)`
   align-items: center;

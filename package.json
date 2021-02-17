@@ -28,6 +28,8 @@
     "watch:packages": "lerna run --stream --parallel --scope @sanity/* watch"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.13.2",
+    "@microsoft/tsdoc": "^0.13.0",
     "@sanity/client": "^2.2.6",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",

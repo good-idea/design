@@ -1,6 +1,6 @@
-import {studioTheme, ThemeProvider} from '@sanity/ui'
 import {select} from '@storybook/addon-knobs'
 import React from 'react'
+import {studioTheme, ThemeProvider} from '../../src'
 
 export const withTheme = (storyFn: () => JSX.Element) => {
   const scheme = select('Color sheme', {Light: 'light', Dark: 'dark'}, 'light', 'Theme')
