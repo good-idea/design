@@ -8,7 +8,6 @@ export function transformFunction(node: any): any {
     _type: 'api.function',
     _id: createId(node.canonicalReference),
     name: node.name,
-    // docComment: node.docComment,
     comment: transformDocComment(node.docComment),
     parameters: node.parameters.map((p: any) => ({
       _type: 'api.functionParameter',
@@ -28,5 +27,27 @@ export function transformFunction(node: any): any {
       )
     ),
     releaseTag: config.releaseTags[node.releaseTag],
+    isReactComponentType: _functionIsReactComponentType(node),
   }
+}
+
+function _functionIsReactComponentType(node: any) {
+  const returnTypeTokens: any[] = node.excerptTokens.slice(
+    node.returnTypeTokenRange.startIndex,
+    node.returnTypeTokenRange.endIndex
+  )
+
+  const returnTypeCode = returnTypeTokens
+    .map((t) => t.text)
+    .join('')
+    .trim()
+
+  const returnsReactElement = returnTypeCode === 'React.ReactElement'
+  const returnsReactNode = returnTypeCode === 'React.ReactNode'
+
+  if (returnsReactElement || returnsReactNode) {
+    return true
+  }
+
+  return false
 }

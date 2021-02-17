@@ -16,5 +16,34 @@ export function transformVariable(node: any): any {
         node.variableTypeTokenRange.endIndex
       )
     ),
+    isReactComponentType: _variableIsReactComponentType(node),
   }
+}
+
+function _variableIsReactComponentType(node: any) {
+  const typeTokens: any[] = node.excerptTokens.slice(
+    node.variableTypeTokenRange.startIndex,
+    node.variableTypeTokenRange.endIndex
+  )
+
+  const typeCode = typeTokens
+    .map((t) => t.text)
+    .join('')
+    .trim()
+
+  const isNamedExoticComponent = typeCode.startsWith('React.NamedExoticComponent<')
+  const isForwardRefExoticComponent = typeCode.startsWith('React.ForwardRefExoticComponent<')
+  const isStyledComponent = typeCode.startsWith('StyledComponent<')
+  const returnsReactElement = typeCode.endsWith('=> React.ReactElement')
+
+  if (
+    isNamedExoticComponent ||
+    isForwardRefExoticComponent ||
+    isStyledComponent ||
+    returnsReactElement
+  ) {
+    return true
+  }
+
+  return false
 }
