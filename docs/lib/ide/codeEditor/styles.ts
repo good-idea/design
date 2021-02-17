@@ -1,5 +1,5 @@
 import {hues} from '@sanity/color'
-import {rem, responsiveCodeFontStyle, Theme} from '@sanity/ui'
+import {_responsiveCodeFontStyle, rem, Theme} from '@sanity/ui'
 import {css} from 'styled-components'
 
 export function codeEditorStyle(props: {theme: Theme}) {
@@ -21,7 +21,7 @@ export function codeEditorStyle(props: {theme: Theme}) {
     }
 
     & > .react-codemirror2 {
-      ${responsiveCodeFontStyle}
+      ${_responsiveCodeFontStyle}
       height: 100%;
       box-sizing: border-box;
       transform: none;
