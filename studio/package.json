@@ -10,7 +10,8 @@
     "build": "sanity build public -y",
     "dev": "sanity start --port 9000",
     "deploy": "sanity deploy",
-    "lint": "eslint . --ext .js,.jsx,.mjs,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.mjs,.ts,.tsx",
+    "start": "http-server -a localhost -c-0 -p 9000 -s -P http://localhost:9000/index.html? public"
   },
   "keywords": [
     "sanity"
@@ -23,10 +24,12 @@
     "@sanity/default-layout": "^2.6.0",
     "@sanity/default-login": "^2.2.6",
     "@sanity/desk-tool": "^2.6.1",
+    "@sanity/icons": "^1.0.5",
     "@sanity/production-preview": "^2.2.6",
     "@sanity/ui": "^0.33.10",
     "@sanity/vision": "^2.2.6",
     "apexcharts": "^3.25.0",
+    "http-server": "^0.12.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
