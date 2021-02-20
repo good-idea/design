@@ -15,6 +15,16 @@ export function _fillCSSObject(propKeys: string[], value: unknown): CSSObject {
 }
 
 /**
+ * Converts a numeric pixel value to a rem unit for CSS.
+ *
+ * @example
+ * ```ts
+ * import {rem} from '@sanity/ui'
+ *
+ * rem(16) // "1rem"
+ * rem(24) // "1.5rem"
+ * ```
+ *
  * @public
  */
 export function rem(pixelValue: number): string | 0 {

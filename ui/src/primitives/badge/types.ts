@@ -9,9 +9,9 @@ export type BadgeMode = 'default' | 'outline'
 export type BadgeTone = 'default' | 'primary' | 'positive' | 'caution' | 'critical'
 
 /**
- * @public
+ * @internal
  */
-export interface BadgeStyleProps {
+export interface _BadgeStyleProps {
   $mode: BadgeMode
   $tone: BadgeTone
 }

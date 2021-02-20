@@ -1,8 +1,8 @@
 import {CSSObject} from 'styled-components'
 import {_ThemeProps} from '../../styles'
-import {BadgeStyleProps} from './types'
+import {_BadgeStyleProps} from './types'
 
-export function badgeStyle(props: BadgeStyleProps & _ThemeProps): CSSObject {
+export function badgeStyle(props: _BadgeStyleProps & _ThemeProps): CSSObject {
   const {$mode, $tone, theme} = props
   const palette = theme.sanity.color[$mode === 'outline' ? 'muted' : 'solid']
   const color = palette[$tone] || palette.default

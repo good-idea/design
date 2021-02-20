@@ -393,6 +393,9 @@ const InnerAutocomplete = forwardRef(
 InnerAutocomplete.displayName = 'Autocomplete'
 
 /**
+ * The `Autocomplete` component is typically used for search components.
+ * It consists of a text input for writing a query, and properties for rendering suggestions.
+ *
  * @public
  */
 export const Autocomplete = InnerAutocomplete as <Option extends AutocompleteGenericOption>(

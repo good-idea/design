@@ -5,7 +5,7 @@ import {Box, BoxProps} from '../box'
 import {Label} from '../label'
 import {ResponsiveRadiusProps} from '../types'
 import {badgeStyle} from './styles'
-import {BadgeStyleProps, BadgeMode, BadgeTone} from './types'
+import {_BadgeStyleProps, BadgeMode, BadgeTone} from './types'
 
 /**
  * @public
@@ -17,7 +17,7 @@ export interface BadgeProps extends BoxProps, ResponsiveRadiusProps {
   tone?: BadgeTone
 }
 
-const Root = styled(Box)<BadgeStyleProps & _ResponsiveRadiusStyleProps>(
+const Root = styled(Box)<_BadgeStyleProps & _ResponsiveRadiusStyleProps>(
   _responsiveRadiusStyle,
   badgeStyle
 )

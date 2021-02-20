@@ -42,10 +42,15 @@ const Stroke = styled.ellipse(avatarStyle.stroke)
 const Initials = styled.div(avatarStyle.initials)
 
 /**
+ * Avatars are used to represent people and other agents (e.g. bots).
+ *
  * @public
  */
 export const Avatar = forwardRef(
-  (props: AvatarProps & Omit<React.HTMLProps<HTMLDivElement>, 'ref'>, ref) => {
+  (
+    props: AvatarProps & Omit<React.HTMLProps<HTMLDivElement>, 'ref'>,
+    ref: React.Ref<HTMLDivElement>
+  ) => {
     const {
       as: asProp,
       color: colorKey = 'gray',
