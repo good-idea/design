@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import {Box} from '../../primitives'
 import {Layer} from '../../utils'
 import {Toast} from './toast'
-import {ToastContext, ToastContextValue} from './toastContext'
-import {ToastParams} from './types'
+import {ToastContext} from './toastContext'
+import {ToastContextValue, ToastParams} from './types'
 
 interface ToastState {
   toasts: {
@@ -15,7 +15,10 @@ interface ToastState {
   }[]
 }
 
-interface ToastProviderProps {
+/**
+ * @public
+ */
+export interface ToastProviderProps {
   children?: React.ReactNode
   padding?: number | number[]
   paddingX?: number | number[]
@@ -43,13 +46,11 @@ const ToastContainer = styled.div`
 
 let toastId = 0
 
-export function ToastProvider({
-  children,
-  padding = 4,
-  paddingX,
-  paddingY,
-  zOffset,
-}: ToastProviderProps): React.ReactElement {
+/**
+ * @public
+ */
+export function ToastProvider(props: ToastProviderProps): React.ReactElement {
+  const {children, padding = 4, paddingX, paddingY, zOffset} = props
   const [state, setState] = useState<ToastState>({toasts: []})
   const toastsRef = useRef<{[key: string]: {timeoutId: NodeJS.Timeout}}>({})
 

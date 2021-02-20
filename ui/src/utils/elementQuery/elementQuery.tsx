@@ -4,10 +4,13 @@ import {useTheme} from '../../theme'
 import {ResizeObserver} from '../resizeObserver'
 import {findMaxBreakpoints, findMinBreakpoints} from './helpers'
 
+/**
+ * @public
+ */
 export const ElementQuery = forwardRef(function ElementQuery(
   props: React.HTMLProps<HTMLDivElement>,
   ref: React.Ref<HTMLDivElement>
-) {
+): React.ReactElement {
   const theme = useTheme()
   const {media} = theme.sanity
   const {children, ...restProps} = props

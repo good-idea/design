@@ -2,6 +2,9 @@ import {useContext} from 'react'
 import {isRecord} from '../../lib/isRecord'
 import {MenuContext, MenuContextValue} from './menuContext'
 
+/**
+ * @public
+ */
 export function useMenu(): MenuContextValue {
   const value = useContext(MenuContext)
 

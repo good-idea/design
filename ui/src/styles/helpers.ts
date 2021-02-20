@@ -2,7 +2,10 @@ import {CSSObject} from 'styled-components'
 import {EMPTY_ARRAY} from '../constants'
 import {Theme} from '../theme'
 
-export function fillCSSObject(propKeys: string[], value: unknown): CSSObject {
+/**
+ * @internal
+ */
+export function _fillCSSObject(propKeys: string[], value: unknown): CSSObject {
   return propKeys.reduce((obj: CSSObject, propKey) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     obj[propKey] = value as any
@@ -11,13 +14,19 @@ export function fillCSSObject(propKeys: string[], value: unknown): CSSObject {
   }, {})
 }
 
+/**
+ * @public
+ */
 export function rem(pixelValue: number): string | 0 {
   if (pixelValue === 0) return 0
 
   return `${pixelValue / 16}rem`
 }
 
-export function responsive<T>(
+/**
+ * @internal
+ */
+export function _responsive<T>(
   media: number[],
   values: T[],
   callback: (value: T, index: number, array: T[]) => CSSObject
@@ -31,13 +40,19 @@ export function responsive<T>(
   })
 }
 
-export function getResponsiveProp<T = number>(val: T | T[] | undefined, defaultVal?: T[]): T[] {
+/**
+ * @internal
+ */
+export function _getResponsiveProp<T = number>(val: T | T[] | undefined, defaultVal?: T[]): T[] {
   if (val === undefined) return defaultVal || EMPTY_ARRAY
 
   return Array.isArray(val) ? val : [val]
 }
 
-export function getResponsiveSpace(
+/**
+ * @internal
+ */
+export function _getResponsiveSpace(
   theme: Theme,
   props: string[],
   spaceIndexes: number[] = EMPTY_ARRAY
@@ -50,7 +65,7 @@ export function getResponsiveSpace(
     return null
   }
 
-  return responsive(theme.sanity.media, spaceIndexes, (spaceIndex) =>
-    fillCSSObject(props, rem(theme.sanity.space[spaceIndex]))
+  return _responsive(theme.sanity.media, spaceIndexes, (spaceIndex) =>
+    _fillCSSObject(props, rem(theme.sanity.space[spaceIndex]))
   )
 }

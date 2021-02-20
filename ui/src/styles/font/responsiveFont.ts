@@ -1,8 +1,8 @@
 import {CSSObject} from 'styled-components'
 import {ThemeFontSize, ThemeFontKey} from '../../theme'
-import {getResponsiveProp, rem, responsive} from '../helpers'
-import {ThemeProps} from '../types'
-import {ResponsiveFontStyleProps} from './types'
+import {_getResponsiveProp, rem, _responsive} from '../helpers'
+import {_ThemeProps} from '../types'
+import {_ResponsiveFontStyleProps} from './types'
 
 /**
  * A utility function getting responsive font styles.
@@ -10,7 +10,7 @@ import {ResponsiveFontStyleProps} from './types'
  */
 export function responsiveFont(
   fontKey: ThemeFontKey,
-  props: ResponsiveFontStyleProps & ThemeProps
+  props: _ResponsiveFontStyleProps & _ThemeProps
 ): CSSObject[] {
   const {$size, $weight, theme} = props
   const {fonts, media} = theme.sanity
@@ -44,7 +44,7 @@ export function responsiveFont(
     },
   } as CSSObject
 
-  const resp = responsive(media, getResponsiveProp($size), (sizeIndex) =>
+  const resp = _responsive(media, _getResponsiveProp($size), (sizeIndex) =>
     fontSize(sizes[sizeIndex] || defaultSize)
   )
 

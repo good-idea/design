@@ -1,7 +1,7 @@
 import {CSSObject} from 'styled-components'
-import {rem, responsive, ThemeProps} from '../../styles'
-import {focusRingStyle} from '../../styles/internal'
-import {AvatarRootStyleProps, ResponsiveAvatarSizeStyleProps} from './types'
+import {rem, _responsive, _ThemeProps} from '../../styles'
+import {_focusRingStyle} from '../../styles'
+import {_AvatarRootStyleProps, _ResponsiveAvatarSizeStyleProps} from './types'
 
 export const avatarStyle = {
   root: avatarRootStyle,
@@ -54,7 +54,7 @@ function avatarArrowStyle(): CSSObject {
   }
 }
 
-export function avatarRootStyle(props: AvatarRootStyleProps & ThemeProps): CSSObject {
+export function avatarRootStyle(props: _AvatarRootStyleProps & _ThemeProps): CSSObject {
   const {$color, theme} = props
   const {focusRing} = theme.sanity
 
@@ -87,7 +87,7 @@ export function avatarRootStyle(props: AvatarRootStyleProps & ThemeProps): CSSOb
       outline: 'none',
 
       '&:focus': {
-        boxShadow: focusRingStyle({focusRing}),
+        boxShadow: _focusRingStyle({focusRing}),
       },
 
       '&:focus:not(:focus-visible)': {
@@ -98,12 +98,12 @@ export function avatarRootStyle(props: AvatarRootStyleProps & ThemeProps): CSSOb
 }
 
 export function responsiveAvatarSizeStyle(
-  props: ResponsiveAvatarSizeStyleProps & ThemeProps
+  props: _ResponsiveAvatarSizeStyleProps & _ThemeProps
 ): CSSObject[] {
   const {theme} = props
   const {avatar, media} = theme.sanity
 
-  return responsive(media, props.$size, (size) => {
+  return _responsive(media, props.$size, (size) => {
     const avatarSize = avatar.sizes[size] || avatar.sizes[0]
 
     return {
@@ -120,7 +120,7 @@ export function responsiveAvatarSizeStyle(
   })
 }
 
-export function avatarInitialsStyle(props: ThemeProps): CSSObject {
+export function avatarInitialsStyle(props: _ThemeProps): CSSObject {
   const {theme} = props
   const {base} = theme.sanity.color
 

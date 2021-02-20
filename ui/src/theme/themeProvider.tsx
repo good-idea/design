@@ -1,9 +1,12 @@
 import React, {useMemo} from 'react'
 import {ThemeProvider as StyledThemeProvider} from 'styled-components'
 import {ThemeColorSchemeKey, ThemeColorName} from './lib/theme'
-import {ThemeContext, ThemeContextValue} from './themeContext'
-import {RootTheme, Theme} from './types'
+import {ThemeContext} from './themeContext'
+import {RootTheme, Theme, ThemeContextValue} from './types'
 
+/**
+ * @public
+ */
 export function ThemeProvider(props: {
   children?: React.ReactNode
   scheme?: ThemeColorSchemeKey

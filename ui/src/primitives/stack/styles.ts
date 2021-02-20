@@ -1,5 +1,5 @@
 import {CSSObject} from 'styled-components'
-import {getResponsiveProp, rem, responsive, ThemeProps} from '../../styles'
+import {_getResponsiveProp, rem, _responsive, _ThemeProps} from '../../styles'
 
 export interface ResponsiveStackSpaceStyleProps {
   $space?: number | number[]
@@ -19,12 +19,12 @@ export function stackBaseStyle(): CSSObject {
 }
 
 export function responsiveStackSpaceStyle(
-  props: ResponsiveStackSpaceStyleProps & ThemeProps
+  props: ResponsiveStackSpaceStyleProps & _ThemeProps
 ): CSSObject[] {
   const {theme} = props
   const {media, space} = theme.sanity
 
-  return responsive(media, getResponsiveProp(props.$space), (spaceIndex) => ({
+  return _responsive(media, _getResponsiveProp(props.$space), (spaceIndex) => ({
     gridGap: rem(space[spaceIndex]),
   }))
 }

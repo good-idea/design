@@ -1,3 +1,6 @@
-export interface ResponsiveWidthStyleProps {
+/**
+ * @internal
+ */
+export interface _ResponsiveWidthStyleProps {
   $width?: number | number[] | 'auto'
 }

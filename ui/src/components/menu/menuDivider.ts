@@ -1,5 +1,8 @@
 import styled, {DefaultTheme, StyledComponent} from 'styled-components'
 
+/**
+ * @public
+ */
 export const MenuDivider: StyledComponent<'hr', DefaultTheme> = styled.hr`
   height: 1px;
   border: 0;

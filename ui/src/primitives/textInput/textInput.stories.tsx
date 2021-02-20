@@ -230,7 +230,7 @@ function ClearableButtonExample() {
 
   return (
     <TextInput
-      clearButton
+      __unstable_clearButton
       onChange={handleChange}
       onClear={handleClear}
       placeholder="Enter text"

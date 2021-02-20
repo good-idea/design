@@ -1,4 +1,7 @@
-export interface ResponsiveBorderStyleProps {
+/**
+ * @internal
+ */
+export interface _ResponsiveBorderStyleProps {
   $border?: boolean | boolean[]
   $borderTop?: boolean | boolean[]
   $borderRight?: boolean | boolean[]

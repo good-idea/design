@@ -1,6 +1,6 @@
 import {css, FlattenSimpleInterpolation} from 'styled-components'
-import {rem, ThemeProps} from '../../styles'
-import {focusRingStyle} from '../../styles/internal'
+import {rem, _ThemeProps} from '../../styles'
+import {_focusRingStyle} from '../../styles'
 
 /* Root */
 export function switchBaseStyles(): FlattenSimpleInterpolation {
@@ -34,7 +34,7 @@ export function switchInputStyles(): FlattenSimpleInterpolation {
 }
 
 /* Representation */
-export function switchRepresentationStyles(props: ThemeProps): FlattenSimpleInterpolation {
+export function switchRepresentationStyles(props: _ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const {focusRing, input} = theme.sanity
   const color = theme.sanity.color.button.default
@@ -56,7 +56,7 @@ export function switchRepresentationStyles(props: ThemeProps): FlattenSimpleInte
 
     /* Focus styles */
     input:focus + & {
-      box-shadow: ${focusRingStyle({focusRing})};
+      box-shadow: ${_focusRingStyle({focusRing})};
     }
 
     input:focus:not(:focus-visible) + & {
@@ -88,7 +88,7 @@ export function switchRepresentationStyles(props: ThemeProps): FlattenSimpleInte
 }
 
 /* Track */
-export function switchTrackStyles(props: ThemeProps): FlattenSimpleInterpolation {
+export function switchTrackStyles(props: _ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const {input} = theme.sanity
 
@@ -108,7 +108,7 @@ export function switchTrackStyles(props: ThemeProps): FlattenSimpleInterpolation
 
 /* Thumb */
 export function switchThumbStyles(
-  props: {$checked?: boolean; $indeterminate?: boolean} & ThemeProps
+  props: {$checked?: boolean; $indeterminate?: boolean} & _ThemeProps
 ): FlattenSimpleInterpolation {
   const {$indeterminate, theme} = props
   const {input} = theme.sanity

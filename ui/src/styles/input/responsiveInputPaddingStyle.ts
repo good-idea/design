@@ -1,8 +1,11 @@
 import {CSSObject} from 'styled-components'
-import {getResponsiveProp, rem, responsive} from '../helpers'
-import {ThemeProps} from '../types'
+import {_getResponsiveProp, rem, _responsive} from '../helpers'
+import {_ThemeProps} from '../types'
 
-export interface TextInputResponsivePaddingStyleProps {
+/**
+ * @internal
+ */
+export interface _TextInputResponsivePaddingStyleProps {
   $fontSize?: number | number[]
   $iconLeft?: boolean
   $iconRight?: boolean
@@ -10,14 +13,17 @@ export interface TextInputResponsivePaddingStyleProps {
   $space?: number | number[]
 }
 
-export function responsiveInputPaddingStyle(
-  props: TextInputResponsivePaddingStyleProps & ThemeProps
+/**
+ * @internal
+ */
+export function _responsiveInputPaddingStyle(
+  props: _TextInputResponsivePaddingStyleProps & _ThemeProps
 ): CSSObject[] {
   const {$iconLeft, $iconRight, theme} = props
   const {fonts, media, space: spaceScale} = theme.sanity
-  const padding = getResponsiveProp(props.$padding, [0])
-  const space = getResponsiveProp(props.$space, [0])
-  const size = getResponsiveProp(props.$fontSize, [0])
+  const padding = _getResponsiveProp(props.$padding, [0])
+  const space = _getResponsiveProp(props.$space, [0])
+  const size = _getResponsiveProp(props.$fontSize, [0])
   const len = Math.max(padding.length, space.length, size.length)
   const _padding: number[] = []
   const _space: number[] = []
@@ -29,7 +35,7 @@ export function responsiveInputPaddingStyle(
     _size[i] = size[i] === undefined ? _size[i - 1] : size[i]
   }
 
-  return responsive(media, _padding, (_, i) => {
+  return _responsive(media, _padding, (_, i) => {
     const fontSize = fonts.text.sizes[_size[i]] || fonts.text.sizes[2]
     const emSize = fontSize.lineHeight - fontSize.ascenderHeight - fontSize.descenderHeight
     const p = spaceScale[_padding[i]]
@@ -49,32 +55,41 @@ export function responsiveInputPaddingStyle(
   })
 }
 
-export function responsiveInputPaddingIconsStyle(
+/**
+ * @internal
+ */
+export function _responsiveInputPaddingIconsStyle(
   props: {
     padding?: number | number[]
     size?: number | number[]
     space?: number | number[]
-  } & ThemeProps
+  } & _ThemeProps
 ): CSSObject[] {
-  return responsiveInputPaddingStyle({...props, $iconLeft: true, $iconRight: true})
+  return _responsiveInputPaddingStyle({...props, $iconLeft: true, $iconRight: true})
 }
 
-export function responsiveInputPaddingIconLeftStyle(
+/**
+ * @internal
+ */
+export function _responsiveInputPaddingIconLeftStyle(
   props: {
     padding?: number | number[]
     size?: number | number[]
     space?: number | number[]
-  } & ThemeProps
+  } & _ThemeProps
 ): CSSObject[] {
-  return responsiveInputPaddingStyle({...props, $iconLeft: true})
+  return _responsiveInputPaddingStyle({...props, $iconLeft: true})
 }
 
-export function responsiveInputPaddingIconRightStyle(
+/**
+ * @internal
+ */
+export function _responsiveInputPaddingIconRightStyle(
   props: {
     padding?: number | number[]
     size?: number | number[]
     space?: number | number[]
-  } & ThemeProps
+  } & _ThemeProps
 ): CSSObject[] {
-  return responsiveInputPaddingStyle({...props, $iconRight: true})
+  return _responsiveInputPaddingStyle({...props, $iconRight: true})
 }

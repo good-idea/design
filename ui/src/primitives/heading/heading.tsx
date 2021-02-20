@@ -1,16 +1,19 @@
 import React, {forwardRef} from 'react'
 import styled from 'styled-components'
 import {
-  ResponsiveFontStyleProps,
-  responsiveHeadingFont,
-  responsiveTextAlignStyle,
-  ResponsiveTextAlignStyleProps,
-} from '../../styles/internal'
+  _ResponsiveFontStyleProps,
+  _responsiveHeadingFont,
+  _responsiveTextAlignStyle,
+  _ResponsiveTextAlignStyleProps,
+} from '../../styles'
 import {ThemeFontWeightKey} from '../../theme'
 import {TextAlign} from '../../types'
 import {headingBaseStyle} from './styles'
 import {HeadingStyleProps} from './types'
 
+/**
+ * @public
+ */
 export interface HeadingProps {
   accent?: boolean
   align?: TextAlign | TextAlign[]
@@ -27,8 +30,8 @@ export interface HeadingProps {
 }
 
 const Root = styled.div<
-  HeadingStyleProps & ResponsiveTextAlignStyleProps & ResponsiveFontStyleProps
->(headingBaseStyle, responsiveTextAlignStyle, responsiveHeadingFont)
+  HeadingStyleProps & _ResponsiveTextAlignStyleProps & _ResponsiveFontStyleProps
+>(headingBaseStyle, _responsiveTextAlignStyle, _responsiveHeadingFont)
 
 const SpanWithTextOverflow = styled.span`
   display: block;
@@ -37,6 +40,9 @@ const SpanWithTextOverflow = styled.span`
   overflow: hidden;
 `
 
+/**
+ * @public
+ */
 export const Heading = forwardRef(
   (props: HeadingProps & Omit<React.HTMLProps<HTMLElement>, 'size'>, ref) => {
     const {

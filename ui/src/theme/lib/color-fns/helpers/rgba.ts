@@ -1,7 +1,10 @@
-import {parseColor} from '../parse'
+import {_parseColor} from '../parse'
 
-export function rgba(color: unknown, a: number): string {
-  const rgb = parseColor(color)
+/**
+ * @internal
+ */
+export function _rgba(color: unknown, a: number): string {
+  const rgb = _parseColor(color)
 
   return `rgba(${rgb.r},${rgb.g},${rgb.b},${a})`
 }

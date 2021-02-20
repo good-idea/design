@@ -1,13 +1,18 @@
 import {CSSObject} from 'styled-components'
-import {getResponsiveProp, rem, responsive} from '../helpers'
-import {ThemeProps} from '../types'
-import {ResponsiveRadiusStyleProps} from './types'
+import {_getResponsiveProp, rem, _responsive} from '../helpers'
+import {_ThemeProps} from '../types'
+import {_ResponsiveRadiusStyleProps} from './types'
 
-export function responsiveRadiusStyle(props: ResponsiveRadiusStyleProps & ThemeProps): CSSObject[] {
+/**
+ * @internal
+ */
+export function _responsiveRadiusStyle(
+  props: _ResponsiveRadiusStyleProps & _ThemeProps
+): CSSObject[] {
   const {theme} = props
   const {media, radius} = theme.sanity
 
-  return responsive(media, getResponsiveProp(props.$radius), (radiusIndex) => ({
+  return _responsive(media, _getResponsiveProp(props.$radius), (radiusIndex) => ({
     borderRadius: rem(radius[radiusIndex]),
   }))
 }

@@ -1,8 +1,14 @@
-export function focusRingBorderStyle(border: {color: string; width: number}): string {
+/**
+ * @internal
+ */
+export function _focusRingBorderStyle(border: {color: string; width: number}): string {
   return `inset 0 0 0 ${border.width}px ${border.color}`
 }
 
-export function focusRingStyle(opts: {
+/**
+ * @internal
+ */
+export function _focusRingStyle(opts: {
   base?: {bg: string}
   border?: {color: string; width: number}
   focusRing: {offset: number; width: number}
@@ -14,7 +20,7 @@ export function focusRingStyle(opts: {
 
   return [
     focusRingInsetWidth > 0 && `inset 0 0 0 ${focusRingInsetWidth}px var(--card-focus-ring-color)`,
-    border && focusRingBorderStyle(border),
+    border && _focusRingBorderStyle(border),
     focusRingInsetWidth < 0 && `0 0 0 ${0 - focusRingInsetWidth}px ${bgColor}`,
     focusRingOutsetWidth > 0 && `0 0 0 ${focusRingOutsetWidth}px var(--card-focus-ring-color)`,
   ]

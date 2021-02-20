@@ -1,10 +1,10 @@
 import {css, FlattenInterpolation} from 'styled-components'
-import {ThemeProps} from '../../styles'
-import {focusRingBorderStyle, focusRingStyle} from '../../styles/internal'
+import {_ThemeProps} from '../../styles'
+import {_focusRingBorderStyle, _focusRingStyle} from '../../styles'
 import {ThemeColorButtonState} from '../../theme'
 import {ButtonMode, ButtonTone} from './types'
 
-export function buttonBaseStyles(): FlattenInterpolation<ThemeProps> {
+export function buttonBaseStyles(): FlattenInterpolation<_ThemeProps> {
   return css`
     -webkit-font-smoothing: inherit;
     appearance: none;
@@ -48,7 +48,9 @@ function buttonColorVarsStyle(color: ThemeColorButtonState) {
 }
 
 // @todo: fix typings
-export function buttonColorStyles(props: {$mode: ButtonMode; $tone: ButtonTone} & ThemeProps): any {
+export function buttonColorStyles(
+  props: {$mode: ButtonMode; $tone: ButtonTone} & _ThemeProps
+): any {
   const {$mode, theme} = props
   const {focusRing} = theme.sanity
   const base = theme.sanity.color.base
@@ -61,14 +63,14 @@ export function buttonColorStyles(props: {$mode: ButtonMode; $tone: ButtonTone} 
     {
       backgroundColor: 'var(--card-bg-color)',
       color: 'var(--card-fg-color)',
-      boxShadow: focusRingBorderStyle(border),
+      boxShadow: _focusRingBorderStyle(border),
       '&:disabled, &[data-disabled="true"]': buttonColorVarsStyle(color.disabled),
       "&:not([data-disabled='true'])": {
         '&:focus': {
-          boxShadow: focusRingStyle({base, border, focusRing}),
+          boxShadow: _focusRingStyle({base, border, focusRing}),
         },
         '&:focus:not(:focus-visible)': {
-          boxShadow: focusRingBorderStyle(border),
+          boxShadow: _focusRingBorderStyle(border),
         },
         '@media (hover: hover)': {
           '&:hover': buttonColorVarsStyle(color.hovered),
@@ -77,6 +79,6 @@ export function buttonColorStyles(props: {$mode: ButtonMode; $tone: ButtonTone} 
         '&[data-selected]': buttonColorVarsStyle(color.selected),
       },
     },
-    theme.sanity.styles?.button?.root,
+    theme.sanity.__unstable_styles?.__unstable_button?.root,
   ]
 }

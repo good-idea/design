@@ -17,6 +17,6 @@ const key = Symbol.for('@sanity/ui/context/dialog')
 globalScope[key] = globalScope[key] || createContext<DialogContextValue>({version: 0.0})
 
 /**
- * @internal
+ * @beta
  */
 export const DialogContext: React.Context<DialogContextValue> = globalScope[key]

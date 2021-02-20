@@ -2,11 +2,11 @@ import {ChevronRightIcon} from '@sanity/icons'
 import React, {useEffect, useRef, useState} from 'react'
 import styled, {css} from 'styled-components'
 import {Box, Popover, Text} from '../../primitives'
-import {ThemeProps} from '../../styles'
+import {_ThemeProps} from '../../styles'
 import {Menu} from './menu'
 import {useMenu} from './useMenu'
 
-const Root = styled.button((props: ThemeProps) => {
+const Root = styled.button((props: _ThemeProps) => {
   const {theme} = props
   const tone = theme.sanity.color.card
 
@@ -53,13 +53,11 @@ const TextContainer = styled.span`
   }
 `
 
-export function MenuGroup({
-  children,
-  title,
-}: {
-  children: React.ReactNode
-  title: string
-}): React.ReactElement {
+/**
+ * @public
+ */
+export function MenuGroup(props: {children: React.ReactNode; title: string}): React.ReactElement {
+  const {children, title} = props
   const [open, setOpen] = useState(false)
   const {mount, onItemClick, onMouseEnter, onMouseLeave} = useMenu()
   const rootRef = useRef<HTMLButtonElement | null>(null)

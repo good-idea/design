@@ -1,9 +1,9 @@
-import {isHTMLAnchorElement, isHTMLButtonElement} from '../../helpers'
+import {_isHTMLAnchorElement, _isHTMLButtonElement} from '../../helpers'
 
 function isFocusable(element: HTMLElement) {
   return (
-    (isHTMLAnchorElement(element) && element.getAttribute('data-disabled') !== 'true') ||
-    (isHTMLButtonElement(element) && !element.disabled)
+    (_isHTMLAnchorElement(element) && element.getAttribute('data-disabled') !== 'true') ||
+    (_isHTMLButtonElement(element) && !element.disabled)
   )
 }
 

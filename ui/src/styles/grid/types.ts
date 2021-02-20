@@ -1,11 +1,27 @@
 // Grid
-export type GridAutoRows = 'auto' | 'min' | 'max' | 'fr'
-export type GridAutoCols = 'auto' | 'min' | 'max' | 'fr'
-export type GridAutoFlow = 'row' | 'column' | 'row dense' | 'column dense'
-export interface ResponsiveGridStyleProps {
-  $autoRows?: GridAutoRows | GridAutoRows[]
-  $autoCols?: GridAutoCols | GridAutoCols[]
-  $autoFlow?: GridAutoFlow | GridAutoFlow[]
+
+/**
+ * @internal
+ */
+export type _GridAutoRows = 'auto' | 'min' | 'max' | 'fr'
+
+/**
+ * @internal
+ */
+export type _GridAutoCols = 'auto' | 'min' | 'max' | 'fr'
+
+/**
+ * @internal
+ */
+export type _GridAutoFlow = 'row' | 'column' | 'row dense' | 'column dense'
+
+/**
+ * @internal
+ */
+export interface _ResponsiveGridStyleProps {
+  $autoRows?: _GridAutoRows | _GridAutoRows[]
+  $autoCols?: _GridAutoCols | _GridAutoCols[]
+  $autoFlow?: _GridAutoFlow | _GridAutoFlow[]
   $columns?: number | number[]
   $gap?: number | number[]
   $gapX?: number | number[]
@@ -14,17 +30,45 @@ export interface ResponsiveGridStyleProps {
 }
 
 // GridItem
-type GridItemColumn = 'auto' | 'full' | number
-type GridItemColumnStart = 'auto' | number
-type GridItemColumnEnd = 'auto' | number
-type GridItemRow = 'auto' | 'full' | number
-type GridItemRowStart = 'auto' | number
-type GridItemRowEnd = 'auto' | number
-export interface ResponsiveGridItemStyleProps {
-  $column?: GridItemColumn | GridItemColumn[]
-  $columnStart?: GridItemColumnStart | GridItemColumnStart[]
-  $columnEnd?: GridItemColumnEnd | GridItemColumnEnd[]
-  $row?: GridItemRow | GridItemRow[]
-  $rowStart?: GridItemRowStart | GridItemRowStart[]
-  $rowEnd?: GridItemRowEnd | GridItemRowEnd[]
+
+/**
+ * @internal
+ */
+export type _GridItemColumn = 'auto' | 'full' | number
+
+/**
+ * @internal
+ */
+export type _GridItemColumnStart = 'auto' | number
+
+/**
+ * @internal
+ */
+export type _GridItemColumnEnd = 'auto' | number
+
+/**
+ * @internal
+ */
+export type _GridItemRow = 'auto' | 'full' | number
+
+/**
+ * @internal
+ */
+export type _GridItemRowStart = 'auto' | number
+
+/**
+ * @internal
+ */
+export type _GridItemRowEnd = 'auto' | number
+
+/**
+ * @internal
+ */
+export interface _ResponsiveGridItemStyleProps {
+  $column?: _GridItemColumn | _GridItemColumn[]
+  $columnStart?: _GridItemColumnStart | _GridItemColumnStart[]
+  $columnEnd?: _GridItemColumnEnd | _GridItemColumnEnd[]
+  $row?: _GridItemRow | _GridItemRow[]
+  $rowStart?: _GridItemRowStart | _GridItemRowStart[]
+  $rowEnd?: _GridItemRowEnd | _GridItemRowEnd[]
 }

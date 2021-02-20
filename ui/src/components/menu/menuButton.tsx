@@ -1,11 +1,14 @@
 import React, {cloneElement, useCallback, useState} from 'react'
 import ReactIs from 'react-is'
-import {isHTMLElement} from '../../helpers'
+import {_isHTMLElement} from '../../helpers'
 import {useClickOutside} from '../../hooks'
 import {Popover} from '../../primitives'
 import {ThemeColorSchemeKey} from '../../theme'
 import {Placement} from '../../types'
 
+/**
+ * @public
+ */
 export interface MenuButtonProps {
   boundaryElement?: HTMLElement
   button: React.ReactElement
@@ -22,17 +25,21 @@ export interface MenuButtonProps {
   preventOverflow?: boolean
 }
 
-export function MenuButton({
-  boundaryElement,
-  button: buttonProp,
-  id,
-  menu: menuProp,
-  placement,
-  popoverScheme,
-  portal,
-  popoverRadius,
-  preventOverflow,
-}: MenuButtonProps): React.ReactElement {
+/**
+ * @public
+ */
+export function MenuButton(props: MenuButtonProps): React.ReactElement {
+  const {
+    boundaryElement,
+    button: buttonProp,
+    id,
+    menu: menuProp,
+    placement,
+    popoverScheme,
+    portal,
+    popoverRadius,
+    preventOverflow,
+  } = props
   const [open, setOpen] = useState(false)
   const [focusLast, setFocusLast] = useState(false)
   const [buttonElement, setButtonElement] = useState<HTMLButtonElement | null>(null)
@@ -72,7 +79,7 @@ export function MenuButton({
     (event: React.FocusEvent<HTMLButtonElement>) => {
       const target = event.relatedTarget
 
-      if (isHTMLElement(target) && !menuElement?.contains(target)) {
+      if (_isHTMLElement(target) && !menuElement?.contains(target)) {
         setOpen(false)
       }
     },

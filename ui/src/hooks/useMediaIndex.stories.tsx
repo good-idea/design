@@ -7,7 +7,7 @@ export default {
   title: 'Hooks/useMediaIndex',
 }
 
-export const test = () => {
+export const test = (): React.ReactElement => {
   return <TestExample />
 }
 

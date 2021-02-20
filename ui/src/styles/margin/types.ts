@@ -1,4 +1,7 @@
-export interface ResponsiveMarginStyleProps {
+/**
+ * @internal
+ */
+export interface _ResponsiveMarginStyleProps {
   $margin?: number | number[]
   $marginX?: number | number[]
   $marginY?: number | number[]

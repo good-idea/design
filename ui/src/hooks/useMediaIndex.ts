@@ -11,7 +11,7 @@ function _getMediaQuery(media: number[], index: number) {
  * This API might change. DO NOT USE IN PRODUCTION.
  * @beta
  */
-export function useMediaIndex() {
+export function useMediaIndex(): number {
   const theme = useTheme()
   const {media} = theme.sanity
 

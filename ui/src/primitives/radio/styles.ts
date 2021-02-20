@@ -1,6 +1,6 @@
 import {css, FlattenSimpleInterpolation} from 'styled-components'
-import {rem, ThemeProps} from '../../styles'
-import {focusRingBorderStyle, focusRingStyle} from '../../styles/internal'
+import {rem, _ThemeProps} from '../../styles'
+import {_focusRingBorderStyle, _focusRingStyle} from '../../styles'
 
 export function radioBaseStyle(): FlattenSimpleInterpolation {
   return css`
@@ -16,7 +16,7 @@ export function radioBaseStyle(): FlattenSimpleInterpolation {
   `
 }
 
-export function inputElementStyle(props: ThemeProps): FlattenSimpleInterpolation {
+export function inputElementStyle(props: _ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const {focusRing, input} = theme.sanity
   const color = theme.sanity.color.input
@@ -45,7 +45,7 @@ export function inputElementStyle(props: ThemeProps): FlattenSimpleInterpolation
       width: ${rem(input.radio.size)};
       border-radius: ${rem(input.radio.size / 2)};
       background: ${color.default.enabled.bg};
-      box-shadow: ${focusRingBorderStyle({
+      box-shadow: ${_focusRingBorderStyle({
         color: color.default.enabled.border,
         width: input.border.width,
       })};
@@ -65,14 +65,14 @@ export function inputElementStyle(props: ThemeProps): FlattenSimpleInterpolation
 
     /* focused */
     &:not(:disabled):focus + span {
-      box-shadow: ${focusRingStyle({
+      box-shadow: ${_focusRingStyle({
         border: {width: input.border.width, color: color.default.enabled.border},
         focusRing,
       })};
     }
 
     &:not(:disabled):focus:not(:focus-visible) + span {
-      box-shadow: ${focusRingBorderStyle({
+      box-shadow: ${_focusRingBorderStyle({
         color: color.default.enabled.border,
         width: input.border.width,
       })};

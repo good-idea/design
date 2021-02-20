@@ -1,6 +1,6 @@
 import {black, ColorTints, hues, white} from '@sanity/color'
-import {rgba} from '../lib/color-fns'
-import {createColorTheme} from '../lib/theme'
+import {_rgba} from '../lib/color-fns'
+import {__unstable_createColorTheme} from '../lib/theme'
 import {multiply, screen} from './helpers'
 
 const tones: {[key: string]: ColorTints} = {
@@ -11,7 +11,7 @@ const tones: {[key: string]: ColorTints} = {
   critical: hues.red,
 }
 
-export const color = createColorTheme({
+export const color = __unstable_createColorTheme({
   base: ({dark, name}) => {
     if (name === 'default') {
       return {
@@ -20,10 +20,10 @@ export const color = createColorTheme({
         border: hues.gray[dark ? 900 : 200].hex,
         focusRing: hues.blue[500].hex,
         shadow: {
-          outline: rgba(hues.gray[500].hex, dark ? 0.2 : 0.4),
-          umbra: rgba(dark ? black.hex : hues.gray[500].hex, 0.2),
-          penumbra: rgba(dark ? black.hex : hues.gray[500].hex, 0.14),
-          ambient: rgba(dark ? black.hex : hues.gray[500].hex, 0.12),
+          outline: _rgba(hues.gray[500].hex, dark ? 0.2 : 0.4),
+          umbra: _rgba(dark ? black.hex : hues.gray[500].hex, 0.2),
+          penumbra: _rgba(dark ? black.hex : hues.gray[500].hex, 0.14),
+          ambient: _rgba(dark ? black.hex : hues.gray[500].hex, 0.12),
         },
       }
     }
@@ -37,10 +37,10 @@ export const color = createColorTheme({
         border: tints[dark ? 800 : 300].hex,
         focusRing: hues.blue[500].hex,
         shadow: {
-          outline: rgba(tints[500].hex, dark ? 0.2 : 0.4),
-          umbra: rgba(dark ? black.hex : tints[500].hex, 0.2),
-          penumbra: rgba(dark ? black.hex : tints[500].hex, 0.14),
-          ambient: rgba(dark ? black.hex : tints[500].hex, 0.12),
+          outline: _rgba(tints[500].hex, dark ? 0.2 : 0.4),
+          umbra: _rgba(dark ? black.hex : tints[500].hex, 0.2),
+          penumbra: _rgba(dark ? black.hex : tints[500].hex, 0.14),
+          ambient: _rgba(dark ? black.hex : tints[500].hex, 0.12),
         },
       }
     }
@@ -53,10 +53,10 @@ export const color = createColorTheme({
       border: tints[dark ? 800 : 200].hex,
       focusRing: tints[500].hex,
       shadow: {
-        outline: rgba(tints[500].hex, dark ? 0.2 : 0.4),
-        umbra: rgba(dark ? black.hex : tints[500].hex, 0.2),
-        penumbra: rgba(dark ? black.hex : tints[500].hex, 0.14),
-        ambient: rgba(dark ? black.hex : tints[500].hex, 0.12),
+        outline: _rgba(tints[500].hex, dark ? 0.2 : 0.4),
+        umbra: _rgba(dark ? black.hex : tints[500].hex, 0.2),
+        penumbra: _rgba(dark ? black.hex : tints[500].hex, 0.14),
+        ambient: _rgba(dark ? black.hex : tints[500].hex, 0.12),
       },
     }
   },

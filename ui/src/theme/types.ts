@@ -1,19 +1,45 @@
 import {CSSObject} from 'styled-components'
-import {BaseTheme, ThemeColor} from './lib/theme'
+import {BaseTheme, ThemeColor, ThemeColorName, ThemeColorSchemeKey} from './lib/theme'
 
-export type RootTheme = BaseTheme<Styles>
+/**
+ * @public
+ */
+export type RootTheme = BaseTheme<ThemeCustomStyles>
 
-export interface Styles {
-  button?: {
+/**
+ * @public
+ */
+export interface ThemeCustomStyles {
+  /**
+   * @beta
+   */
+  __unstable_button?: {
     root?: CSSObject
   }
-  card?: {
+
+  /**
+   * @beta
+   */
+  __unstable_card?: {
     root?: CSSObject
   }
 }
 
+/**
+ * @public
+ */
 export interface Theme {
   sanity: Omit<RootTheme, 'color'> & {
     color: ThemeColor
   }
+}
+
+/**
+ * @public
+ */
+export interface ThemeContextValue {
+  version: 0.0
+  scheme: ThemeColorSchemeKey
+  theme: RootTheme
+  tone: ThemeColorName
 }

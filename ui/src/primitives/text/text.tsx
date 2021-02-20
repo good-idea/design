@@ -1,14 +1,17 @@
 import React, {forwardRef} from 'react'
 import styled from 'styled-components'
 import {
-  ResponsiveFontStyleProps,
-  responsiveTextAlignStyle,
-  responsiveTextFont,
-} from '../../styles/internal'
+  _ResponsiveFontStyleProps,
+  _responsiveTextAlignStyle,
+  _responsiveTextFont,
+} from '../../styles'
 import {ThemeFontWeightKey} from '../../theme'
 import {TextAlign} from '../../types'
 import {textBaseStyle} from './styles'
 
+/**
+ * @public
+ */
 export interface TextProps {
   accent?: boolean
   align?: TextAlign | TextAlign[]
@@ -24,9 +27,9 @@ export interface TextProps {
   weight?: ThemeFontWeightKey
 }
 
-const Root = styled.div<ResponsiveFontStyleProps>(
-  responsiveTextFont,
-  responsiveTextAlignStyle,
+const Root = styled.div<_ResponsiveFontStyleProps>(
+  _responsiveTextFont,
+  _responsiveTextAlignStyle,
   textBaseStyle
 )
 
@@ -37,6 +40,9 @@ const SpanWithTextOverflow = styled.span`
   overflow: hidden;
 `
 
+/**
+ * @public
+ */
 export const Text = forwardRef(
   (props: TextProps & Omit<React.HTMLProps<HTMLDivElement>, 'size'>, ref) => {
     const {

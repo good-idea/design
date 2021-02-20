@@ -1,17 +1,17 @@
 import React, {forwardRef} from 'react'
 import styled from 'styled-components'
 import {
-  flexItemStyle,
-  FlexItemStyleProps,
-  responsiveBoxStyle,
-  ResponsiveBoxStyleProps,
-  responsiveGridItemStyle,
-  ResponsiveGridItemStyleProps,
-  responsivePaddingStyle,
-  ResponsivePaddingStyleProps,
-  responsiveMarginStyle,
-  ResponsiveMarginStyleProps,
-} from '../../styles/internal'
+  _flexItemStyle,
+  _FlexItemStyleProps,
+  _responsiveBoxStyle,
+  _ResponsiveBoxStyleProps,
+  _responsiveGridItemStyle,
+  _ResponsiveGridItemStyleProps,
+  _responsivePaddingStyle,
+  _ResponsivePaddingStyleProps,
+  _responsiveMarginStyle,
+  _ResponsiveMarginStyleProps,
+} from '../../styles'
 import {
   ResponsiveBoxProps,
   ResponsiveFlexItemProps,
@@ -20,6 +20,9 @@ import {
   ResponsivePaddingProps,
 } from '../types'
 
+/**
+ * @public
+ */
 export interface BoxProps
   extends ResponsiveFlexItemProps,
     ResponsiveBoxProps,
@@ -30,19 +33,22 @@ export interface BoxProps
 }
 
 const Root = styled.div<
-  FlexItemStyleProps &
-    ResponsiveBoxStyleProps &
-    ResponsiveGridItemStyleProps &
-    ResponsiveMarginStyleProps &
-    ResponsivePaddingStyleProps
+  _FlexItemStyleProps &
+    _ResponsiveBoxStyleProps &
+    _ResponsiveGridItemStyleProps &
+    _ResponsiveMarginStyleProps &
+    _ResponsivePaddingStyleProps
 >(
-  flexItemStyle,
-  responsiveBoxStyle,
-  responsiveGridItemStyle,
-  responsiveMarginStyle,
-  responsivePaddingStyle
+  _flexItemStyle,
+  _responsiveBoxStyle,
+  _responsiveGridItemStyle,
+  _responsiveMarginStyle,
+  _responsivePaddingStyle
 )
 
+/**
+ * @public
+ */
 export const Box = forwardRef(
   (props: BoxProps & Omit<React.HTMLProps<HTMLDivElement>, 'height'>, ref) => {
     const {

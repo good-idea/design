@@ -2,29 +2,32 @@ import {ThemeFontWeightKey} from '../../theme'
 import {TextAlign} from '../../types'
 
 /**
- * @beta Should not be used in production, as this might change.
+ * @internal
  */
-export interface ResponsiveFontSizeStyleProps {
+export interface _ResponsiveFontSizeStyleProps {
   $size?: number | number[]
 }
 
 /**
- * @beta Should not be used in production, as this might change.
+ * @internal
  */
-export interface FontWeightStyleProps {
+export interface _FontWeightStyleProps {
   $weight?: ThemeFontWeightKey
 }
 
-export interface ResponsiveTextAlignStyleProps {
+/**
+ * @internal
+ */
+export interface _ResponsiveTextAlignStyleProps {
   $align?: TextAlign | TextAlign[]
 }
 
 /**
- * @beta Should not be used in production, as this might change.
+ * @internal
  */
-export interface ResponsiveFontStyleProps
-  extends FontWeightStyleProps,
-    ResponsiveFontSizeStyleProps {
+export interface _ResponsiveFontStyleProps
+  extends _FontWeightStyleProps,
+    _ResponsiveFontSizeStyleProps {
   $accent?: boolean
   $muted?: boolean
 }

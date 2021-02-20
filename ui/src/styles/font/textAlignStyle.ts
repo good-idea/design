@@ -1,18 +1,18 @@
 import {CSSObject} from 'styled-components'
-import {getResponsiveProp, responsive} from '../helpers'
-import {ThemeProps} from '../types'
-import {ResponsiveTextAlignStyleProps} from './types'
+import {_getResponsiveProp, _responsive} from '../helpers'
+import {_ThemeProps} from '../types'
+import {_ResponsiveTextAlignStyleProps} from './types'
 
 /**
  * Get responsive text align styles.
- * @beta Should not be used in production, as this might change.
+ * @internal
  */
-export function responsiveTextAlignStyle(
-  props: ResponsiveTextAlignStyleProps & ThemeProps
+export function _responsiveTextAlignStyle(
+  props: _ResponsiveTextAlignStyleProps & _ThemeProps
 ): CSSObject[] {
   const {theme} = props
 
-  return responsive(theme.sanity.media, getResponsiveProp(props.$align), (textAlign) => {
+  return _responsive(theme.sanity.media, _getResponsiveProp(props.$align), (textAlign) => {
     return {textAlign}
   })
 }

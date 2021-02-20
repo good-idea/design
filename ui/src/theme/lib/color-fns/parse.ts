@@ -1,11 +1,14 @@
-import {hexToRgb, hslToRgb} from './convert'
-import {HSL, RGB} from './types'
+import {_hexToRgb, _hslToRgb} from './convert'
+import {_HSL, _RGB} from './types'
 
 const HEX_CHARS = '0123456789ABCDEFabcdef'
 
 const HSL_RE = /hsl\(\s*(\d+)\s*,\s*((\d+(?:\.\d+)?)%)\s*,\s*((\d+(?:\.\d+)?)%)\s*\)/i
 
-function isHexChars(str: string) {
+/**
+ * @internal
+ */
+function _isHexChars(str: string) {
   for (const c of str) {
     if (HEX_CHARS.indexOf(c) === -1) {
       return false
@@ -15,16 +18,22 @@ function isHexChars(str: string) {
   return true
 }
 
-function isHex(str: string) {
+/**
+ * @internal
+ */
+function _isHex(str: string) {
   if (str[0] !== '#') return false
 
   // Accept both #000 and #000000
   if (!(str.length === 4 || str.length === 7)) return false
 
-  return isHexChars(str.slice(1))
+  return _isHexChars(str.slice(1))
 }
 
-function parseHsl(str: string): HSL {
+/**
+ * @internal
+ */
+function _parseHsl(str: string): _HSL {
   const res = HSL_RE.exec(str)
 
   if (!res) {
@@ -34,19 +43,22 @@ function parseHsl(str: string): HSL {
   return {h: parseInt(res[1]), s: parseFloat(res[3]), l: parseFloat(res[5])}
 }
 
-export function parseColor(color: unknown): RGB {
+/**
+ * @internal
+ */
+export function _parseColor(color: unknown): _RGB {
   if (!color) return {r: 0, g: 0, b: 0}
 
   if (typeof color !== 'string') {
     throw new Error('parseColor: expected a string')
   }
 
-  if (isHex(color)) {
-    return hexToRgb(color)
+  if (_isHex(color)) {
+    return _hexToRgb(color)
   }
 
   if (color.startsWith('hsl(')) {
-    return hslToRgb(parseHsl(color))
+    return _hslToRgb(_parseHsl(color))
   }
 
   throw new Error(`parseColor: unexpected color format: "${color}"`)

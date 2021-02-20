@@ -1,4 +1,7 @@
-export interface ResponsivePaddingStyleProps {
+/**
+ * @internal
+ */
+export interface _ResponsivePaddingStyleProps {
   $padding?: number | number[]
   $paddingX?: number | number[]
   $paddingY?: number | number[]

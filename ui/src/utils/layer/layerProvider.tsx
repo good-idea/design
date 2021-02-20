@@ -1,14 +1,16 @@
 import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react'
 import {useMediaIndex, useResponsiveProp} from '../../hooks'
-import {LayerContext, LayerContextValue} from './layerContext'
+import {LayerContext} from './layerContext'
+import {LayerContextValue} from './types'
 
-export function LayerProvider({
-  children,
-  zOffset: zOffsetProp = 0,
-}: {
+/**
+ * @public
+ */
+export function LayerProvider(props: {
   children?: React.ReactNode
   zOffset?: number | number[]
 }): React.ReactElement {
+  const {children, zOffset: zOffsetProp = 0} = props
   const parent = useContext(LayerContext)
   const zOffset = useResponsiveProp(zOffsetProp)
   const maxMediaIndex = zOffset.length - 1

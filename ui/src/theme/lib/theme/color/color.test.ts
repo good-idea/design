@@ -1,9 +1,9 @@
-import {createColorTheme} from '.'
+import {__unstable_createColorTheme} from '@sanity/ui'
 
 describe('color', () => {
   describe('createColorTheme', () => {
     it('should generate base (scheme=light, name=default)', () => {
-      const theme = createColorTheme()
+      const theme = __unstable_createColorTheme()
       const scheme = 'light'
       const name = 'default'
       const color = theme[scheme][name]
@@ -23,7 +23,7 @@ describe('color', () => {
     })
 
     it('should generate muted states (scheme=light, name=default)', () => {
-      const theme = createColorTheme()
+      const theme = __unstable_createColorTheme()
       const scheme = 'light'
       const name = 'default'
       const color = theme[scheme][name]

@@ -4,6 +4,9 @@ import {ThemeFonts, ThemeFontWeightKey} from './fonts'
 import {ThemeInput} from './input'
 import {ThemeShadow} from './shadow'
 
+/**
+ * @public
+ */
 // eslint-disable-next-line @typescript-eslint/ban-types
 export interface BaseTheme<Styles extends {} = {}> {
   avatar: ThemeAvatar
@@ -22,5 +25,9 @@ export interface BaseTheme<Styles extends {} = {}> {
   shadows: Array<ThemeShadow | null>
   space: number[]
   input: ThemeInput
-  styles?: Styles
+
+  /**
+   * @beta
+   */
+  __unstable_styles?: Styles
 }

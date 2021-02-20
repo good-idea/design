@@ -5,29 +5,35 @@ import styled from 'styled-components'
 import {EMPTY_RECORD} from '../../constants'
 import {useForwardedRef, useCustomValidity, useResponsiveProp} from '../../hooks'
 import {
-  responsiveRadiusStyle,
-  ResponsiveRadiusStyleProps,
-  responsiveInputPaddingStyle,
-  textInputStyle,
-  TextInputInputStyleProps,
-  TextInputRepresentationStyleProps,
-  TextInputResponsivePaddingStyleProps,
-} from '../../styles/internal'
+  _responsiveRadiusStyle,
+  _ResponsiveRadiusStyleProps,
+  _responsiveInputPaddingStyle,
+  _textInputStyle,
+  _TextInputInputStyleProps,
+  _TextInputRepresentationStyleProps,
+  _TextInputResponsivePaddingStyleProps,
+} from '../../styles'
 import {ThemeFontWeightKey} from '../../theme'
 import {Box} from '../box'
 import {Button, ButtonProps} from '../button'
 import {Card} from '../card'
 import {Text} from '../text'
 
-type ClearButtonProps = Omit<ButtonProps, 'as'> &
+/**
+ * @public
+ */
+export type TextInputClearButtonProps = Omit<ButtonProps, 'as'> &
   Omit<React.HTMLProps<HTMLButtonElement>, 'as' | 'ref'>
 
-interface TextInputProps {
+/**
+ * @public
+ */
+export interface TextInputProps {
   border?: boolean
   /**
    * @beta
    */
-  clearButton?: boolean | ClearButtonProps
+  __unstable_clearButton?: boolean | TextInputClearButtonProps
   customValidity?: string
   fontSize?: number | number[]
   icon?: React.ComponentType | React.ReactNode
@@ -58,7 +64,7 @@ interface TextInputProps {
 
 const CLEAR_BUTTON_BOX_STYLE: React.CSSProperties = {zIndex: 2}
 
-const Root = styled.span(textInputStyle.root as any)
+const Root = styled.span(_textInputStyle.root as any)
 
 const InputRoot = styled.span`
   flex: 1;
@@ -87,14 +93,14 @@ const Suffix = styled(Card).attrs({forwardedAs: 'span'})`
   }
 `
 
-const Input = styled.input<TextInputResponsivePaddingStyleProps & TextInputInputStyleProps>(
-  responsiveInputPaddingStyle,
-  textInputStyle.input
+const Input = styled.input<_TextInputResponsivePaddingStyleProps & _TextInputInputStyleProps>(
+  _responsiveInputPaddingStyle,
+  _textInputStyle.input
 )
 
-const Presentation = styled.span<ResponsiveRadiusStyleProps & TextInputRepresentationStyleProps>(
-  responsiveRadiusStyle,
-  textInputStyle.representation
+const Presentation = styled.span<_ResponsiveRadiusStyleProps & _TextInputRepresentationStyleProps>(
+  _responsiveRadiusStyle,
+  _textInputStyle.representation
 )
 
 const LeftBox = styled(Box)`
@@ -109,14 +115,17 @@ const RightBox = styled(Box)`
   right: 0;
 `
 
+/**
+ * @public
+ */
 export const TextInput = forwardRef(
   (
     props: TextInputProps & Omit<React.HTMLProps<HTMLInputElement>, 'as' | 'type'>,
     forwardedRef: React.Ref<HTMLInputElement>
   ) => {
     const {
+      __unstable_clearButton: clearButton,
       border = true,
-      clearButton,
       disabled = false,
       fontSize = 2,
       icon,
@@ -208,7 +217,7 @@ export const TextInput = forwardRef(
     // Render clear button (memoized)
     const clearButtonBoxPadding = useMemo(() => padding.map((v) => v - 2), [padding])
     const clearButtonPadding = useMemo(() => padding.map((v) => v - 1), [padding])
-    const clearButtonProps: ClearButtonProps = useMemo(
+    const clearButtonProps: TextInputClearButtonProps = useMemo(
       () => (typeof clearButton === 'object' ? clearButton : EMPTY_RECORD),
       [clearButton]
     )

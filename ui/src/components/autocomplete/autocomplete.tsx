@@ -9,20 +9,29 @@ import React, {
   useState,
 } from 'react'
 import {EMPTY_ARRAY} from '../../constants'
-import {focusFirstDescendant} from '../../helpers'
+import {_focusFirstDescendant} from '../../helpers'
 import {useForwardedRef, useResponsiveProp} from '../../hooks'
 import {Box, Button, ButtonProps, Card, Spinner, Text, TextInput} from '../../primitives'
 import {AutocompleteOption} from './autocompleteOption'
 import {Root, LoadingCard, ListBoxContainer, ListBoxCard} from './styles'
 
-type OpenButtonProps = Omit<ButtonProps, 'as'> &
+/**
+ * @beta
+ */
+export type AutocompleteOpenButtonProps = Omit<ButtonProps, 'as'> &
   Omit<React.HTMLProps<HTMLButtonElement>, 'as' | 'ref'>
 
-export interface BaseAutocompleteOption {
+/**
+ * @public
+ */
+export interface AutocompleteGenericOption {
   value: string
 }
 
-export interface AutocompleteProps<Option extends BaseAutocompleteOption> {
+/**
+ * @public
+ */
+export interface AutocompleteProps<Option extends AutocompleteGenericOption> {
   border?: boolean
   filterOption?: (query: string, option: Option) => boolean
   fontSize?: number | number[]
@@ -35,7 +44,7 @@ export interface AutocompleteProps<Option extends BaseAutocompleteOption> {
   /**
    * @beta
    */
-  openButton?: boolean | OpenButtonProps
+  openButton?: boolean | AutocompleteOpenButtonProps
   options?: Option[]
   padding?: number | number[]
   prefix?: React.ReactNode
@@ -46,7 +55,10 @@ export interface AutocompleteProps<Option extends BaseAutocompleteOption> {
   value?: string
 }
 
-type AutocompleteOverriddenInputAttrKey =
+/**
+ * @public
+ */
+export type AutocompleteOverriddenInputAttrKey =
   | 'aria-activedescendant'
   | 'aria-autocomplete'
   | 'aria-expanded'
@@ -67,10 +79,10 @@ type AutocompleteOverriddenInputAttrKey =
 
 const EMPTY_RECORD = {}
 
-const defaultRenderValue = (value: string, option?: BaseAutocompleteOption) =>
+const defaultRenderValue = (value: string, option?: AutocompleteGenericOption) =>
   option ? option.value : value
 
-const defaultFilterOption = (query: string, option: BaseAutocompleteOption) =>
+const defaultFilterOption = (query: string, option: AutocompleteGenericOption) =>
   option.value.toLowerCase().indexOf(query.toLowerCase()) > -1
 
 const LIST_IGNORE_KEYS = [
@@ -88,7 +100,7 @@ const LIST_IGNORE_KEYS = [
 ]
 
 const InnerAutocomplete = forwardRef(
-  <Option extends BaseAutocompleteOption>(
+  <Option extends AutocompleteGenericOption>(
     props: AutocompleteProps<Option> &
       Omit<React.HTMLProps<HTMLInputElement>, AutocompleteOverriddenInputAttrKey>,
     ref: React.Ref<HTMLInputElement>
@@ -114,7 +126,7 @@ const InnerAutocomplete = forwardRef(
     } = props
 
     const defaultRenderOption = useCallback(
-      ({value}: BaseAutocompleteOption) => (
+      ({value}: AutocompleteGenericOption) => (
         <Card as="button" padding={paddingProp} tone="inherit">
           <Text size={fontSize}>{value}</Text>
         </Card>
@@ -266,7 +278,7 @@ const InnerAutocomplete = forwardRef(
       const selectedItemElement = listElement.childNodes[selectedIndex] as HTMLLIElement | undefined
 
       if (selectedItemElement) {
-        focusFirstDescendant(selectedItemElement)
+        _focusFirstDescendant(selectedItemElement)
       }
     }, [selectedIndex])
 
@@ -288,7 +300,7 @@ const InnerAutocomplete = forwardRef(
 
     const openButtonBoxPadding = useMemo(() => padding.map((v) => v - 2), [padding])
     const openButtonPadding = useMemo(() => padding.map((v) => v - 1), [padding])
-    const openButtonProps: OpenButtonProps = useMemo(
+    const openButtonProps: AutocompleteOpenButtonProps = useMemo(
       () => (typeof openButton === 'object' ? openButton : EMPTY_RECORD),
       [openButton]
     )
@@ -325,6 +337,7 @@ const InnerAutocomplete = forwardRef(
       >
         <TextInput
           {...restProps}
+          __unstable_clearButton={clearButton}
           aria-activedescendant={activeItemId}
           aria-autocomplete="list"
           aria-expanded={expanded}
@@ -333,7 +346,6 @@ const InnerAutocomplete = forwardRef(
           autoComplete="off"
           autoCorrect="off"
           border={border}
-          clearButton={clearButton}
           fontSize={fontSize}
           icon={icon}
           id={id}
@@ -380,7 +392,10 @@ const InnerAutocomplete = forwardRef(
 
 InnerAutocomplete.displayName = 'Autocomplete'
 
-export const Autocomplete = InnerAutocomplete as <Option extends BaseAutocompleteOption>(
+/**
+ * @public
+ */
+export const Autocomplete = InnerAutocomplete as <Option extends AutocompleteGenericOption>(
   props: AutocompleteProps<Option> &
     Omit<React.HTMLProps<HTMLInputElement>, AutocompleteOverriddenInputAttrKey> & {
       ref?: React.Ref<HTMLInputElement>

@@ -1,10 +1,10 @@
 import {CSSObject} from 'styled-components'
-import {getResponsiveProp} from '..'
+import {_getResponsiveProp} from '..'
 import {EMPTY_RECORD} from '../../constants'
 import {BoxShadow, ThemeShadow} from '../../theme'
-import {rem, responsive} from '../helpers'
-import {ThemeProps} from '../types'
-import {ResponsiveShadowStyleProps} from './types'
+import {rem, _responsive} from '../helpers'
+import {_ThemeProps} from '../types'
+import {_ResponsiveShadowStyleProps} from './types'
 
 function toBoxShadow(shadow: BoxShadow, color: string) {
   return `${shadow.map(rem).join(' ')} ${color}`
@@ -21,11 +21,16 @@ function shadowStyle(shadow: ThemeShadow | null): CSSObject {
   return {boxShadow: `${outline}, ${umbra}, ${penumbra}, ${ambient}`}
 }
 
-export function responsiveShadowStyle(props: ResponsiveShadowStyleProps & ThemeProps): CSSObject[] {
+/**
+ * @internal
+ */
+export function _responsiveShadowStyle(
+  props: _ResponsiveShadowStyleProps & _ThemeProps
+): CSSObject[] {
   const {theme} = props
   const {media, shadows} = theme.sanity
 
-  return responsive(media, getResponsiveProp(props.$shadow), (shadow) =>
+  return _responsive(media, _getResponsiveProp(props.$shadow), (shadow) =>
     shadowStyle(shadows[shadow])
   )
 }

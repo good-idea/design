@@ -1,6 +1,6 @@
 import {css, FlattenSimpleInterpolation} from 'styled-components'
-import {rem, ThemeProps} from '../../styles'
-import {focusRingBorderStyle, focusRingStyle} from '../../styles/internal'
+import {rem, _ThemeProps} from '../../styles'
+import {_focusRingBorderStyle, _focusRingStyle} from '../../styles'
 
 export function checkboxBaseStyles(): FlattenSimpleInterpolation {
   return css`
@@ -9,7 +9,7 @@ export function checkboxBaseStyles(): FlattenSimpleInterpolation {
   `
 }
 
-export function inputElementStyles(props: ThemeProps): FlattenSimpleInterpolation {
+export function inputElementStyles(props: _ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const color = theme.sanity.color.input
   const {focusRing, input, radius} = theme.sanity
@@ -32,7 +32,7 @@ export function inputElementStyles(props: ThemeProps): FlattenSimpleInterpolatio
       height: ${rem(input.checkbox.size)};
       width: ${rem(input.checkbox.size)};
       box-sizing: border-box;
-      box-shadow: ${focusRingBorderStyle({
+      box-shadow: ${_focusRingBorderStyle({
         color: color.default.enabled.border,
         width: input.border.width,
       })};
@@ -55,14 +55,14 @@ export function inputElementStyles(props: ThemeProps): FlattenSimpleInterpolatio
     }
 
     &:not(:disabled):focus + span {
-      box-shadow: ${focusRingStyle({
+      box-shadow: ${_focusRingStyle({
         border: {width: input.border.width, color: color.default.enabled.border},
         focusRing,
       })};
     }
 
     &:not(:disabled):focus:not(:focus-visible) + span {
-      box-shadow: ${focusRingBorderStyle({
+      box-shadow: ${_focusRingBorderStyle({
         color: color.default.enabled.border,
         width: input.border.width,
       })};
@@ -74,7 +74,7 @@ export function inputElementStyles(props: ThemeProps): FlattenSimpleInterpolatio
 
     &:not([data-read-only]):disabled + span {
       background: ${color.default.disabled.bg};
-      box-shadow: ${focusRingBorderStyle({
+      box-shadow: ${_focusRingBorderStyle({
         width: input.border.width,
         color: color.default.disabled.border,
       })};

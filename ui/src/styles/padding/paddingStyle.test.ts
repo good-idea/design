@@ -1,18 +1,18 @@
-import {studioTheme, Theme} from '../../theme'
-import {responsivePaddingStyle} from './paddingStyle'
+import {studioTheme, Theme} from '@sanity/ui'
+import {_responsivePaddingStyle} from './paddingStyle'
 
 const {color, ...restTheme} = studioTheme
 const theme: Theme = {sanity: {...restTheme, color: color.light.default}}
 
 describe('styles/padding', () => {
   it('should', () => {
-    const styles = responsivePaddingStyle({$padding: 0, theme})
+    const styles = _responsivePaddingStyle({$padding: 0, theme})
 
     expect(styles).toEqual([[{padding: 0}]])
   })
 
   it('should', () => {
-    const styles = responsivePaddingStyle({$padding: [0, 1, 2], theme})
+    const styles = _responsivePaddingStyle({$padding: [0, 1, 2], theme})
 
     expect(styles).toEqual([
       [

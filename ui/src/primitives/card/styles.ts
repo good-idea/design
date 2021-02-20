@@ -1,13 +1,9 @@
 import {css, FlattenSimpleInterpolation} from 'styled-components'
-import {ThemeProps} from '../../styles'
+import {_ThemeProps} from '../../styles'
 import {ThemeColorBase, ThemeColorCardState} from '../../theme'
-import {CardStyleProps} from './types'
+import {_CardStyleProps} from './types'
 
 export const cardStyle = [cardBaseStyle, cardColorStyle]
-
-// export function cardStyle(props: CardStyleProps & ThemeProps) {
-//   return [cardBaseStyle, cardColorStyle(props)]
-// }
 
 export function cardBaseStyle(): FlattenSimpleInterpolation {
   return css`
@@ -59,7 +55,7 @@ function vars(base: ThemeColorBase, color: ThemeColorCardState) {
   `
 }
 
-export function cardColorStyle(props: CardStyleProps & ThemeProps): FlattenSimpleInterpolation {
+export function cardColorStyle(props: _CardStyleProps & _ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const {base, card} = theme.sanity.color
 
@@ -126,6 +122,6 @@ export function cardColorStyle(props: CardStyleProps & ThemeProps): FlattenSimpl
       }
     }
 
-    ${theme.sanity.styles?.card?.root}
+    ${theme.sanity.__unstable_styles?.__unstable_card?.root}
   `
 }

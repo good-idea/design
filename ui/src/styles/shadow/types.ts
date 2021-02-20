@@ -1,3 +1,6 @@
-export interface ResponsiveShadowStyleProps {
+/**
+ * @internal
+ */
+export interface _ResponsiveShadowStyleProps {
   $shadow?: number | number[]
 }

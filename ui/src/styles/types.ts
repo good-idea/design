@@ -1,5 +1,8 @@
 import {Theme} from '../theme'
 
-export interface ThemeProps {
+/**
+ * @internal
+ */
+export interface _ThemeProps {
   theme: Theme
 }

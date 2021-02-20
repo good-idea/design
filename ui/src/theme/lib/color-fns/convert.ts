@@ -1,6 +1,9 @@
-import {HSL, RGB} from './types'
+import {_HSL, _RGB} from './types'
 
-export function hexToRgb(hex: string): RGB {
+/**
+ * @internal
+ */
+export function _hexToRgb(hex: string): _RGB {
   if (hex.length === 4) {
     const hexR = hex.slice(1, 2)
     const hexG = hex.slice(2, 3)
@@ -20,11 +23,17 @@ export function hexToRgb(hex: string): RGB {
   }
 }
 
-export function rgbToHex({r, g, b}: RGB): string {
+/**
+ * @internal
+ */
+export function _rgbToHex({r, g, b}: _RGB): string {
   return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
 }
 
-export function hslToRgb(hsl: HSL): RGB {
+/**
+ * @internal
+ */
+export function _hslToRgb(hsl: _HSL): _RGB {
   // Must be fractions of 1
   const s = hsl.s / 100
   const l = hsl.l / 100

@@ -1,17 +1,20 @@
 import {
-  isHTMLElement,
-  isHTMLAnchorElement,
-  isHTMLInputElement,
-  isHTMLButtonElement,
-  isHTMLSelectElement,
-  isHTMLTextAreaElement,
+  _isHTMLElement,
+  _isHTMLAnchorElement,
+  _isHTMLInputElement,
+  _isHTMLButtonElement,
+  _isHTMLSelectElement,
+  _isHTMLTextAreaElement,
 } from './element'
 
-// export const globalFocusState = {
+// const globalFocusState = {
 //   IgnoreUtilFocusChanges: false,
 // }
 
-export function isFocusable(element: HTMLElement): boolean {
+/**
+ * @internal
+ */
+export function _isFocusable(element: HTMLElement): boolean {
   if (
     element.tabIndex > 0 ||
     (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)
@@ -19,18 +22,18 @@ export function isFocusable(element: HTMLElement): boolean {
     return true
   }
 
-  if (isHTMLAnchorElement(element)) {
+  if (_isHTMLAnchorElement(element)) {
     return Boolean(element.href) && element.rel !== 'ignore'
   }
 
-  if (isHTMLInputElement(element)) {
+  if (_isHTMLInputElement(element)) {
     return element.type !== 'hidden' && element.type !== 'file' && !element.disabled
   }
 
   if (
-    isHTMLButtonElement(element) ||
-    isHTMLSelectElement(element) ||
-    isHTMLTextAreaElement(element)
+    _isHTMLButtonElement(element) ||
+    _isHTMLSelectElement(element) ||
+    _isHTMLTextAreaElement(element)
   ) {
     return !element.disabled
   }
@@ -38,8 +41,11 @@ export function isFocusable(element: HTMLElement): boolean {
   return false
 }
 
-export function attemptFocus(element: HTMLElement): boolean {
-  if (!isFocusable(element)) {
+/**
+ * @internal
+ */
+export function _attemptFocus(element: HTMLElement): boolean {
+  if (!_isFocusable(element)) {
     return false
   }
 
@@ -56,11 +62,14 @@ export function attemptFocus(element: HTMLElement): boolean {
   return document.activeElement === element
 }
 
-export function focusFirstDescendant(element: HTMLElement): boolean {
+/**
+ * @internal
+ */
+export function _focusFirstDescendant(element: HTMLElement): boolean {
   for (let i = 0; i < element.childNodes.length; i++) {
     const child = element.childNodes[i]
 
-    if (isHTMLElement(child) && (attemptFocus(child) || focusFirstDescendant(child))) {
+    if (_isHTMLElement(child) && (_attemptFocus(child) || _focusFirstDescendant(child))) {
       return true
     }
   }
@@ -68,11 +77,14 @@ export function focusFirstDescendant(element: HTMLElement): boolean {
   return false
 }
 
-export function focusLastDescendant(element: HTMLElement): boolean {
+/**
+ * @internal
+ */
+export function _focusLastDescendant(element: HTMLElement): boolean {
   for (let i = element.childNodes.length - 1; i >= 0; i--) {
     const child = element.childNodes[i]
 
-    if (isHTMLElement(child) && (attemptFocus(child) || focusLastDescendant(child))) {
+    if (_isHTMLElement(child) && (_attemptFocus(child) || _focusLastDescendant(child))) {
       return true
     }
   }

@@ -2,7 +2,10 @@ import React, {forwardRef, useCallback, useEffect, useRef} from 'react'
 import {useForwardedRef} from '../../hooks'
 import {Button} from '../../primitives'
 
-interface TabProps {
+/**
+ * @public
+ */
+export interface TabProps {
   /**
    * The `id` of the correlating `TabPanel` component.
    */
@@ -16,6 +19,9 @@ interface TabProps {
   selected?: boolean
 }
 
+/**
+ * @public
+ */
 export const Tab = forwardRef(
   (
     props: TabProps &

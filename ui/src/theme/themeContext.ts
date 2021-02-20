@@ -1,14 +1,6 @@
 import {createContext} from 'react'
 import {globalScope} from '../lib/globalScope'
-import {ThemeColorName, ThemeColorSchemeKey} from './lib/theme'
-import {RootTheme} from './types'
-
-export interface ThemeContextValue {
-  version: 0.0
-  scheme: ThemeColorSchemeKey
-  theme: RootTheme
-  tone: ThemeColorName
-}
+import {ThemeContextValue} from './types'
 
 const key = Symbol.for('@sanity/ui/context/theme')
 

@@ -17,10 +17,12 @@ import {
 export * from './syntax'
 export * from './types'
 
-type PartialThemeColorBuilderOpts = Partial<ThemeColorBuilderOpts>
-
-export function createColorTheme(
-  partialOpts: PartialThemeColorBuilderOpts = {}
+/**
+ * Returns a color theme object than can be used by `@sanity/ui`.
+ * @beta
+ */
+export function __unstable_createColorTheme(
+  partialOpts: Partial<ThemeColorBuilderOpts> = {}
 ): ThemeColorSchemes {
   const builders: ThemeColorBuilderOpts = {...defaultOpts, ...partialOpts}
 

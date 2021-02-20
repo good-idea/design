@@ -1,6 +1,17 @@
-// offsetX, offsetY, blurRadius, spreadRadius
-export type BoxShadow = [number, number, number, number]
+/**
+ * @public
+ */
+export type BoxShadow = [
+  // offsetX, offsetY, blurRadius, spreadRadius
+  number,
+  number,
+  number,
+  number
+]
 
+/**
+ * @public
+ */
 export interface ThemeShadow {
   umbra: BoxShadow
   penumbra: [number, number, number, number]

@@ -1,5 +1,8 @@
 import {ThemeColorToneKey} from '../../theme'
 
-export interface CardStyleProps {
+/**
+ * @internal
+ */
+export interface _CardStyleProps {
   $tone: ThemeColorToneKey
 }

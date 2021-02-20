@@ -1,8 +1,8 @@
 import React, {createElement, forwardRef, isValidElement} from 'react'
 import {isValidElementType} from 'react-is'
 import styled from 'styled-components'
-import {ThemeProps} from '../../styles'
-import {FlexJustify, responsiveRadiusStyle, ResponsiveRadiusStyleProps} from '../../styles/internal'
+import {_ThemeProps} from '../../styles'
+import {FlexJustify, _responsiveRadiusStyle, _ResponsiveRadiusStyleProps} from '../../styles'
 import {useTheme} from '../../theme'
 import {Box} from '../box'
 import {Flex} from '../flex'
@@ -12,6 +12,9 @@ import {ResponsivePaddingProps, ResponsiveRadiusProps} from '../types'
 import {buttonBaseStyles, buttonColorStyles} from './styles'
 import {ButtonMode, ButtonTone} from './types'
 
+/**
+ * @public
+ */
 export interface ButtonProps extends ResponsivePaddingProps, ResponsiveRadiusProps {
   as?: React.ElementType | keyof JSX.IntrinsicElements
   fontSize?: number | number[]
@@ -31,8 +34,8 @@ export interface ButtonProps extends ResponsivePaddingProps, ResponsiveRadiusPro
 }
 
 const Root = styled.button<
-  {$mode: ButtonMode; $tone: ButtonTone} & ResponsiveRadiusStyleProps & ThemeProps
->(responsiveRadiusStyle, buttonBaseStyles, buttonColorStyles)
+  {$mode: ButtonMode; $tone: ButtonTone} & _ResponsiveRadiusStyleProps & _ThemeProps
+>(_responsiveRadiusStyle, buttonBaseStyles, buttonColorStyles)
 
 const LoadingBox = styled.div`
   position: absolute;
@@ -49,6 +52,9 @@ const LoadingBox = styled.div`
   box-shadow: inherit;
 `
 
+/**
+ * @public
+ */
 export const Button = forwardRef((props: ButtonProps & React.HTMLProps<HTMLButtonElement>, ref) => {
   const {
     children,

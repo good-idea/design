@@ -1,21 +1,21 @@
 import {css, CSSObject, FlattenSimpleInterpolation} from 'styled-components'
-import {getResponsiveProp, rem, responsive, ThemeProps} from '../../styles'
+import {_getResponsiveProp, rem, _responsive, _ThemeProps} from '../../styles'
 import {
-  focusRingBorderStyle,
-  focusRingStyle,
-  responsiveInputPaddingIconRightStyle,
-  responsiveRadiusStyle,
-} from '../../styles/internal'
+  _focusRingBorderStyle,
+  _focusRingStyle,
+  _responsiveInputPaddingIconRightStyle,
+  _responsiveRadiusStyle,
+} from '../../styles'
 import {ThemeFontSize} from '../../theme'
 
 export const selectStyle = {
   root: rootStyle,
   input: [
-    responsiveRadiusStyle,
+    _responsiveRadiusStyle,
     inputBaseStyle,
     inputColorStyle,
     inputTextSizeStyle,
-    responsiveInputPaddingIconRightStyle,
+    _responsiveInputPaddingIconRightStyle,
   ],
   iconBox: iconBoxStyle,
 }
@@ -31,7 +31,7 @@ function rootStyle(): FlattenSimpleInterpolation {
   `
 }
 
-function inputBaseStyle(props: ThemeProps): FlattenSimpleInterpolation {
+function inputBaseStyle(props: _ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const font = theme.sanity.fonts.text
 
@@ -51,7 +51,7 @@ function inputBaseStyle(props: ThemeProps): FlattenSimpleInterpolation {
   `
 }
 
-function inputColorStyle(props: ThemeProps): FlattenSimpleInterpolation {
+function inputColorStyle(props: _ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const {focusRing, input} = theme.sanity
   const color = theme.sanity.color.input
@@ -60,7 +60,7 @@ function inputColorStyle(props: ThemeProps): FlattenSimpleInterpolation {
     /* enabled */
     background-color: ${color.default.enabled.bg};
     color: ${color.default.enabled.fg};
-    box-shadow: ${focusRingBorderStyle({
+    box-shadow: ${_focusRingBorderStyle({
       color: color.default.enabled.border,
       width: input.border.width,
     })};
@@ -70,7 +70,7 @@ function inputColorStyle(props: ThemeProps): FlattenSimpleInterpolation {
       &:not(:disabled):hover {
         background-color: ${color.default.hovered.bg};
         color: ${color.default.hovered.fg};
-        box-shadow: ${focusRingBorderStyle({
+        box-shadow: ${_focusRingBorderStyle({
           color: color.default.hovered.border,
           width: input.border.width,
         })};
@@ -79,7 +79,7 @@ function inputColorStyle(props: ThemeProps): FlattenSimpleInterpolation {
 
     /* focused */
     &:not(:disabled):focus {
-      box-shadow: ${focusRingStyle({
+      box-shadow: ${_focusRingStyle({
         border: {width: input.border.width, color: color.default.enabled.border},
         focusRing,
       })};
@@ -89,7 +89,7 @@ function inputColorStyle(props: ThemeProps): FlattenSimpleInterpolation {
     &:not([data-read-only]):disabled {
       background-color: ${color.default.disabled.bg};
       color: ${color.default.disabled.fg};
-      box-shadow: ${focusRingBorderStyle({
+      box-shadow: ${_focusRingBorderStyle({
         color: color.default.disabled.border,
         width: input.border.width,
       })};
@@ -101,16 +101,16 @@ function textSize(size: ThemeFontSize): CSSObject {
   return {fontSize: rem(size.fontSize), lineHeight: rem(size.lineHeight)}
 }
 
-function inputTextSizeStyle(props: {$fontSize?: number | number[]} & ThemeProps): CSSObject[] {
+function inputTextSizeStyle(props: {$fontSize?: number | number[]} & _ThemeProps): CSSObject[] {
   const {theme, $fontSize} = props
   const {sizes} = theme.sanity.fonts.text
 
-  return responsive(theme.sanity.media, getResponsiveProp($fontSize), (sizeIndex) =>
+  return _responsive(theme.sanity.media, _getResponsiveProp($fontSize), (sizeIndex) =>
     textSize(sizes[sizeIndex] || sizes[2])
   )
 }
 
-function iconBoxStyle(props: ThemeProps): FlattenSimpleInterpolation {
+function iconBoxStyle(props: _ThemeProps): FlattenSimpleInterpolation {
   const {theme} = props
   const color = theme.sanity.color.input
 

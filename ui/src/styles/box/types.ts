@@ -1,11 +1,29 @@
-export type BoxSizing = 'content' | 'border'
-export type BoxDisplay = 'none' | 'block' | 'grid' | 'flex' | 'inline-block'
-export type BoxHeight = 'stretch' | 'fill'
-export type BoxOverflow = 'visible' | 'hidden' | 'auto'
+/**
+ * @internal
+ */
+export type _BoxSizing = 'content' | 'border'
 
-export interface ResponsiveBoxStyleProps {
-  $display?: BoxDisplay | BoxDisplay[]
-  $height?: BoxHeight | BoxHeight[]
-  $overflow?: BoxOverflow | BoxOverflow[]
-  $sizing?: BoxSizing | BoxSizing[]
+/**
+ * @internal
+ */
+export type _BoxDisplay = 'none' | 'block' | 'grid' | 'flex' | 'inline-block'
+
+/**
+ * @internal
+ */
+export type _BoxHeight = 'stretch' | 'fill'
+
+/**
+ * @internal
+ */
+export type _BoxOverflow = 'visible' | 'hidden' | 'auto'
+
+/**
+ * @internal
+ */
+export interface _ResponsiveBoxStyleProps {
+  $display?: _BoxDisplay | _BoxDisplay[]
+  $height?: _BoxHeight | _BoxHeight[]
+  $overflow?: _BoxOverflow | _BoxOverflow[]
+  $sizing?: _BoxSizing | _BoxSizing[]
 }

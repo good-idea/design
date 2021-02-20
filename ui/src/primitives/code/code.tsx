@@ -1,18 +1,24 @@
 import React, {forwardRef} from 'react'
 import Refractor from 'react-refractor'
 import styled from 'styled-components'
-import {responsiveCodeFontStyle, ResponsiveFontStyleProps} from '../../styles/internal'
+import {_responsiveCodeFontStyle, _ResponsiveFontStyleProps} from '../../styles'
 import {codeBaseStyle} from './styles'
 
-interface CodeProps {
+/**
+ * @public
+ */
+export interface CodeProps {
   as?: React.ElementType | keyof JSX.IntrinsicElements
   language?: string
   size?: number | number[]
   weight?: string
 }
 
-const Root = styled.pre<ResponsiveFontStyleProps>(codeBaseStyle, responsiveCodeFontStyle)
+const Root = styled.pre<_ResponsiveFontStyleProps>(codeBaseStyle, _responsiveCodeFontStyle)
 
+/**
+ * @public
+ */
 export const Code = forwardRef(
   (props: CodeProps & Omit<React.HTMLProps<HTMLElement>, 'size'>, ref) => {
     const {children, language: languageProp, size = 2, weight, ...restProps} = props

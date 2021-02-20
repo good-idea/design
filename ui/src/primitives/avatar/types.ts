@@ -1,11 +1,28 @@
+/**
+ * @public
+ */
 export type AvatarPosition = 'top' | 'bottom' | 'inside'
+
+/**
+ * @public
+ */
 export type AvatarSize = 0 | 1 | 2
+
+/**
+ * @public
+ */
 export type AvatarStatus = 'online' | 'editing' | 'inactive'
 
-export interface AvatarRootStyleProps {
+/**
+ * @internal
+ */
+export interface _AvatarRootStyleProps {
   $color: string
 }
 
-export interface ResponsiveAvatarSizeStyleProps {
+/**
+ * @internal
+ */
+export interface _ResponsiveAvatarSizeStyleProps {
   $size: AvatarSize[]
 }

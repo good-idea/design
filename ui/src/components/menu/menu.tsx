@@ -7,7 +7,10 @@ import {useLayer} from '../../utils'
 import {getFocusableElements} from './helpers'
 import {MenuContext, MenuContextValue} from './menuContext'
 
-interface MenuProps extends ResponsivePaddingProps {
+/**
+ * @public
+ */
+export interface MenuProps extends ResponsivePaddingProps {
   focusLast?: boolean
   onClickOutside?: () => void
   onEscape?: () => void
@@ -19,6 +22,9 @@ const Root = styled(Box)`
   outline: none;
 `
 
+/**
+ * @public
+ */
 export const Menu = forwardRef(
   (props: MenuProps & Omit<React.HTMLProps<HTMLDivElement>, 'as' | 'height'>, ref) => {
     const {

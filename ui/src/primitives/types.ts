@@ -1,4 +1,10 @@
+import {FlexAlign, FlexDirection, FlexJustify, FlexWrap} from '../styles'
+
 // Border
+
+/**
+ * @public
+ */
 export interface ResponsiveBorderProps {
   border?: boolean | boolean[]
   borderTop?: boolean | boolean[]
@@ -8,10 +14,30 @@ export interface ResponsiveBorderProps {
 }
 
 // Box
+
+/**
+ * @public
+ */
 export type BoxSizing = 'content' | 'border'
+
+/**
+ * @public
+ */
 export type BoxDisplay = 'none' | 'block' | 'grid' | 'flex' | 'inline-block'
+
+/**
+ * @public
+ */
 export type BoxHeight = 'stretch' | 'fill'
+
+/**
+ * @public
+ */
 export type BoxOverflow = 'visible' | 'hidden' | 'auto'
+
+/**
+ * @public
+ */
 export interface ResponsiveBoxProps {
   display?: BoxDisplay | BoxDisplay[]
   height?: BoxHeight | BoxHeight[]
@@ -19,17 +45,9 @@ export interface ResponsiveBoxProps {
   sizing?: BoxSizing | BoxSizing[]
 }
 
-// Flex
-export type FlexAlign = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
-export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse'
-export type FlexJustify =
-  | 'flex-start'
-  | 'flex-end'
-  | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-export type FlexWrap = 'wrap' | 'wrap-reverse' | 'nowrap'
+/**
+ * @public
+ */
 export interface ResponsiveFlexProps {
   align?: FlexAlign | FlexAlign[]
   direction?: FlexDirection | FlexDirection[]
@@ -38,14 +56,34 @@ export interface ResponsiveFlexProps {
 }
 
 // FlexItem
+
+/**
+ * @public
+ */
 export interface ResponsiveFlexItemProps {
   flex?: number | number[]
 }
 
 // Grid
+
+/**
+ * @public
+ */
 export type GridAutoRows = 'auto' | 'min' | 'max' | 'fr'
+
+/**
+ * @public
+ */
 export type GridAutoCols = 'auto' | 'min' | 'max' | 'fr'
+
+/**
+ * @public
+ */
 export type GridAutoFlow = 'row' | 'column' | 'row dense' | 'column dense'
+
+/**
+ * @public
+ */
 export interface ResponsiveGridProps {
   autoRows?: GridAutoRows | GridAutoRows[]
   autoCols?: GridAutoCols | GridAutoCols[]
@@ -58,12 +96,40 @@ export interface ResponsiveGridProps {
 }
 
 // GridItem
-type GridItemColumn = 'auto' | 'full' | number
-type GridItemColumnStart = 'auto' | number
-type GridItemColumnEnd = 'auto' | number
-type GridItemRow = 'auto' | 'full' | number
-type GridItemRowStart = 'auto' | number
-type GridItemRowEnd = 'auto' | number
+
+/**
+ * @public
+ */
+export type GridItemColumn = 'auto' | 'full' | number
+
+/**
+ * @public
+ */
+export type GridItemColumnStart = 'auto' | number
+
+/**
+ * @public
+ */
+export type GridItemColumnEnd = 'auto' | number
+
+/**
+ * @public
+ */
+export type GridItemRow = 'auto' | 'full' | number
+
+/**
+ * @public
+ */
+export type GridItemRowStart = 'auto' | number
+
+/**
+ * @public
+ */
+export type GridItemRowEnd = 'auto' | number
+
+/**
+ * @public
+ */
 export interface ResponsiveGridItemProps {
   column?: GridItemColumn | GridItemColumn[]
   columnStart?: GridItemColumnStart | GridItemColumnStart[]
@@ -74,6 +140,10 @@ export interface ResponsiveGridItemProps {
 }
 
 // Margin
+
+/**
+ * @public
+ */
 export interface ResponsiveMarginProps {
   margin?: number | number[]
   marginX?: number | number[]
@@ -85,6 +155,10 @@ export interface ResponsiveMarginProps {
 }
 
 // Padding
+
+/**
+ * @public
+ */
 export interface ResponsivePaddingProps {
   padding?: number | number[]
   paddingX?: number | number[]
@@ -96,16 +170,28 @@ export interface ResponsivePaddingProps {
 }
 
 // Radius
+
+/**
+ * @public
+ */
 export interface ResponsiveRadiusProps {
   radius?: number | number[]
 }
 
 // Shadow
+
+/**
+ * @public
+ */
 export interface ResponsiveShadowProps {
   shadow?: number | number[]
 }
 
 // Width
+
+/**
+ * @public
+ */
 export interface ResponsiveWidthProps {
   width?: number | number[] | 'auto'
 }
