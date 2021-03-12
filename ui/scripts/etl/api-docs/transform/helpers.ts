@@ -6,5 +6,5 @@ export function hash(key: string): string {
 }
 
 export function createId(key: string): string {
-  return hash(`${config.package.scope}/${config.package.name}/${config.package.version}${key}`)
+  return hash(`${config.package.scope}/${config.package.name}@${config.package.version}/${key}`)
 }

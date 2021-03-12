@@ -1,5 +1,4 @@
 import {config} from '../config'
-import {hash} from './helpers'
 import {transformClass} from './transformClass'
 import {transformFunction} from './transformFunction'
 import {transformInterface} from './transformInterface'
@@ -38,7 +37,7 @@ function transformPackage(node: any, currPackageDoc: any, releaseDoc: any) {
   return {
     ...currPackageDoc,
     _type: 'api.package',
-    _id: hash(node.canonicalReference),
+    _id: node.name.replace(/@/g, '').replace(/\./g, '-').replace(/\//g, '_'),
     name: node.name,
     releases,
     latestRelease: {
@@ -49,25 +48,25 @@ function transformPackage(node: any, currPackageDoc: any, releaseDoc: any) {
   }
 }
 
-function transformMember(member: any) {
+function transformMember(member: any, releaseDoc: any) {
   if (member.kind === 'Class') {
-    return transformClass(member)
+    return transformClass(member, releaseDoc)
   }
 
   if (member.kind === 'Function') {
-    return transformFunction(member)
+    return transformFunction(member, releaseDoc)
   }
 
   if (member.kind === 'Interface') {
-    return transformInterface(member)
+    return transformInterface(member, releaseDoc)
   }
 
   if (member.kind === 'TypeAlias') {
-    return transformTypeAlias(member)
+    return transformTypeAlias(member, releaseDoc)
   }
 
   if (member.kind === 'Variable') {
-    return transformVariable(member)
+    return transformVariable(member, releaseDoc)
   }
 
   throw new Error(`package: unknown member type: ${member.kind}`)
@@ -78,8 +77,9 @@ export function transform(input: any, currPackageDoc: any): any {
 
   const releaseDoc = {
     _type: 'api.release',
-    _id: hash(`${scope}/${name}@${version}`),
-    name: `${scope}/${name}@${version}`,
+    _id: `${scope}_${name}_${version}`.replace(/@/g, '').replace(/\./g, '-').replace(/\//g, '_'),
+    // name: `${scope}/${name}`,
+    version,
     members: [] as any[],
   }
 
@@ -88,7 +88,7 @@ export function transform(input: any, currPackageDoc: any): any {
   const docs: any[] = [releaseDoc]
 
   for (const member of input.members[0].members) {
-    const memberDoc = transformMember(member)
+    const memberDoc = transformMember(member, releaseDoc)
 
     docs.push(memberDoc)
 

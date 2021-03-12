@@ -1,13 +1,16 @@
+import slugify from 'slugify'
 import {config} from '../config'
 import {createId, hash} from './helpers'
 import {transformDocComment} from './transformDocComment'
 import {transformTokens} from './transformTokens'
 
-export function transformInterface(node: any): any {
+export function transformInterface(node: any, releaseDoc: any): any {
   return {
     _type: 'api.interface',
     _id: createId(node.canonicalReference),
+    release: {_type: 'reference', _ref: releaseDoc._id, _weak: true},
     name: node.name,
+    slug: {current: slugify(node.name).toLowerCase()},
     comment: transformDocComment(node.docComment),
     extends: node.extendsTokenRanges.map((range: any, idx: number) => {
       return {

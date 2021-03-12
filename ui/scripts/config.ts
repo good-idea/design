@@ -6,6 +6,8 @@ export const config = {
   },
 }
 
+console.log(JSON.stringify(config, null, 2))
+
 function getEnv(key: string): string {
   const value = process.env[key]
 
